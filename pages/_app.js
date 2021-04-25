@@ -22,6 +22,7 @@ const MyApp = ({ Component, pageProps }) => {
   }
   const { metadata } = global;
 
+  
   return (
     <>
       {/* Favicon */}
