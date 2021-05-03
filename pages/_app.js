@@ -1,10 +1,10 @@
 import App from "next/app";
-import Head from "next/head";
+import AppHead from "@/components/elements/head";
 import ErrorPage from "next/error";
 import { useRouter } from "next/router";
 import { DefaultSeo } from "next-seo";
 import { getStrapiMedia } from "utils/media";
-import { getStrapiURL, getGlobalData } from "utils/api";
+import { getGlobalData } from "utils/api";
 import Layout from "@/components/layout";
 import "@/styles/index.css";
 
@@ -25,10 +25,7 @@ const MyApp = ({ Component, pageProps }) => {
   
   return (
     <>
-      {/* Favicon */}
-      <Head>
-        <link rel="shortcut icon" href={getStrapiMedia(global.favicon.url)} />
-      </Head>
+      <AppHead favicon={getStrapiMedia(global.favicon.url)} />
       {/* Global site metadata */}
       <DefaultSeo
         titleTemplate={`%s | ${global.metaTitleSuffix}`}
@@ -49,6 +46,7 @@ const MyApp = ({ Component, pageProps }) => {
         }}
       />
       {/* Display the content */}
+
       <Layout global={global}>
         <Component {...pageProps} />
       </Layout>

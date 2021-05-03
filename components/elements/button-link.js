@@ -1,7 +1,6 @@
 import classNames from "classnames";
 import PropTypes from "prop-types";
 import { buttonLinkPropTypes } from "utils/types";
-import Link from "next/link";
 import CustomLink from "./custom-link";
 
 const ButtonContent = ({ button, appearance, compact }) => {

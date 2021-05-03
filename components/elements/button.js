@@ -3,8 +3,9 @@ import PropTypes from 'prop-types'
 import { buttonLinkPropTypes } from 'utils/types'
 import Loader from './loader'
 
-const Button = ({
-  button,
+const Button = ({ 
+  text,
+  link,
   appearance,
   compact = false,
   handleClick,
@@ -12,7 +13,7 @@ const Button = ({
   type,
 }) => {
   return (
-    <button link={button} onClick={handleClick} type={type}>
+    <button link={link} onClick={handleClick} type={type}>
       <div
         className={classNames(
           // Common classes
@@ -46,7 +47,7 @@ const Button = ({
         )}
       >
         {loading && <Loader />}
-        {button.text}
+        {text}
       </div>
     </button>
   )
