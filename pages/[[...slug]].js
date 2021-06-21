@@ -72,6 +72,7 @@ export async function getStaticProps({ params, preview = null }) {
       sections: contentSections,
       metadata,
     },
+    revalidate: 1
   };
 }
 
