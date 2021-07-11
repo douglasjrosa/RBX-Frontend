@@ -5,11 +5,11 @@ import CustomLink from "./custom-link";
 
 const Footer = ({ footer }) => {
   return (
-    <footer className="pt-12 bg-gray-100">
+    <footer className="pt-12 bg-opacity-90 bg-gray-300">
       <div className="container flex flex-col lg:flex-row lg:justify-between">
         <div>
           {footer.logo && (
-            <Image media={footer.logo} className="h-8 w-auto object-contain" />
+            <Image media={footer.logo} className="h-24 w-auto object-contain" />
           )}
         </div>
         <nav className="flex flex-wrap flex-row lg:gap-20 items-start lg:justify-end mb-10">
@@ -34,7 +34,7 @@ const Footer = ({ footer }) => {
           ))}
         </nav>
       </div>
-      <div className="text-sm bg-gray-200 py-6 text-gray-700">
+      <div className="text-sm bg-gray-600 py-6 text-gray-200">
         <div className="container">{footer.smallText}</div>
       </div>
     </footer>

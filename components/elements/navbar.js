@@ -19,7 +19,7 @@ const Navbar = ({ navbar }) => {
   return (
     <>
       {/* The actual navbar */}
-      <nav className="border-gray-200 border-b-2 py-6 sm:py-2">
+      <nav className="shadow-lg py-6 sm:py-2 bg-white">
         <div className="container flex flex-row items-center justify-between">
           {/* Content aligned to the left */}
           <div className="flex flex-row items-center">
@@ -27,12 +27,12 @@ const Navbar = ({ navbar }) => {
               <a>
                 <Image
                   media={navbar.logo}
-                  className="h-8 w-auto object-contain"
+                  className="h-10 w-auto object-contain"
                 />
               </a>
             </Link>
             {/* List of links on desktop */}
-            <ul className="hidden list-none md:flex flex-row gap-4 items-baseline ml-10">
+            <ul className="hidden list-none md:flex flex-row gap-4 items-baseline ml-10 text-lg">
               {navbar.links.map((navLink) => (
                 <li key={navLink.id}>
                   <CustomLink link={navLink}>
