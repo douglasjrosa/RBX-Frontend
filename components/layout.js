@@ -5,7 +5,6 @@ import { useState } from "react";
 
 const Layout = ({ children, global }) => {
   const { navbar, footer, notificationBanner } = global;
-  console.log(notificationBanner);
 
   const [bannerIsShown, setBannerIsShown] = useState(true);
 

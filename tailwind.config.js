@@ -14,6 +14,10 @@ module.exports = {
           md: "2rem",
         },
       },
+      backgroundImage: theme => ({
+        'rbx-white': "url('https://rbx-backend-media.s3.sa-east-1.amazonaws.com/bg_bloco_min_8981be1e00.webp')",
+        'rbx-green': "url('https://rbx-backend-media.s3.sa-east-1.amazonaws.com/bg_h1_d355630fd8.webp')"
+       })
     },
     screens: {
       sm: "640px",
