@@ -10,7 +10,7 @@ const FeatureRowsGroup = ({ data }) => {
         <div
           className={classNames(
             // Common classes
-            "flex flex-col justify-start md:justify-between md:items-center gap-10",
+            "flex flex-col justify-center md:items-center gap-20",
             {
               "lg:flex-row": index % 2 === 0,
               "lg:flex-row-reverse": index % 2 === 1,
@@ -21,7 +21,7 @@ const FeatureRowsGroup = ({ data }) => {
           {/* Text section */}
           <div className="w-full lg:w-6/12 lg:pr-6 text-lg">
             <h3 className="title">{feature.title}</h3>
-            <p className="my-6">{feature.description}</p>
+            <div className="my-6">{feature.description}</div>
             <CustomLink link={feature.link}>
               <div className="text-blue-600 with-arrow hover:underline">
                 {feature.link.text}
