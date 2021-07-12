@@ -9,7 +9,7 @@ const Layout = ({ children, global }) => {
   const [bannerIsShown, setBannerIsShown] = useState(true);
 
   return (
-    <div className="flex flex-col justify-between min-h-screen bg-rbx-forest bg-center bg-cover">
+    <div className="flex flex-col justify-between min-h-screen sm:bg-rbx-forest bg-fixed bg-center bg-cover">
       {/* Aligned to the top */}
       <div className="flex-1">
         <div className="fixed w-full">
@@ -21,7 +21,7 @@ const Layout = ({ children, global }) => {
           )}
           <Navbar navbar={navbar} />
         </div>
-        <div className="my-28">{children}</div>
+        <div className="my-36">{children}</div>
       </div>
       {/* Aligned to the bottom */}
       <Footer footer={footer} />

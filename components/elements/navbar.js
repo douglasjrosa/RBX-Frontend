@@ -19,7 +19,7 @@ const Navbar = ({ navbar }) => {
   return (
     <>
       {/* The actual navbar */}
-      <nav className="shadow-lg py-6 sm:py-2 bg-white">
+      <nav className="shadow-lg py-6 sm:py-3 bg-white">
         <div className="container flex flex-row items-center justify-between">
           {/* Content aligned to the left */}
           <div className="flex flex-row items-center">

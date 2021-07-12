@@ -7,6 +7,7 @@ import { getStrapiMedia } from "utils/media";
 import { getGlobalData } from "utils/api";
 import Layout from "@/components/layout";
 import "@/styles/index.css";
+import "@/styles/rbx.css";
 
 const MyApp = ({ Component, pageProps }) => {
   // Prevent Next bug when it tries to render the [[...slug]] route
