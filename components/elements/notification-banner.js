@@ -20,7 +20,11 @@ const NotificationBanner = ({ data: { text, type }, closeSelf }) => {
         <div className="rich-text-banner flex-1 text-xl">
           <Markdown children={text} />
         </div>
-        <button onClick={closeSelf} className="px-1 py-1 flex-shrink-0">
+        <button
+          onClick={closeSelf} 
+          className="px-1 py-1 flex-shrink-0" 
+          aria-label="Fechar notificação de cookies"
+        >
           <MdClose className="h-6 w-auto" color="#fff" />
         </button>
       </div>

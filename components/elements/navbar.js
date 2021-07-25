@@ -24,10 +24,11 @@ const Navbar = ({ navbar }) => {
           {/* Content aligned to the left */}
           <div className="flex flex-row items-center">
             <Link href="/[[...slug]]" as="/">
-              <a>
+              <a aria-label="Página inicial">
                 <Image
                   media={navbar.logo}
                   className="h-10 w-auto object-contain"
+                  alt="Logomarca Ribermax"
                 />
               </a>
             </Link>
@@ -48,6 +49,7 @@ const Navbar = ({ navbar }) => {
           <button
             onClick={() => setMobileMenuIsShown(true)}
             className="p-1 block md:hidden"
+            aria-label="Menu principal"
           >
             <MdMenu className="h-8 w-auto" />
           </button>
@@ -58,6 +60,7 @@ const Navbar = ({ navbar }) => {
                 button={navbar.button}
                 appearance={getButtonAppearance(navbar.button.type, "light")}
                 compact
+                aria-label="Menu principal"
               />
             </div>
           )}
@@ -69,6 +72,7 @@ const Navbar = ({ navbar }) => {
         <MobileNavMenu
           navbar={navbar}
           closeSelf={() => setMobileMenuIsShown(false)}
+          aria-label="Fechar menu principal"
         />
       )}
     </>
