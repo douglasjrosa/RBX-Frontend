@@ -12,7 +12,7 @@ const Footer = ({ footer }) => {
             <Image media={footer.logo} className="h-32 p-4 bg-opacity-75 bg-white w-auto object-contain" />
           )}
         </div>
-        <nav className="flex flex-wrap flex-row lg:gap-20 items-start lg:justify-end mb-10 text-green-400">
+        <nav className="flex flex-wrap flex-row lg:gap-20 items-start lg:justify-end mb-10 text-green-200">
           {footer.columns.map((footerColumn) => (
             <div
               key={footerColumn.id}
@@ -23,7 +23,7 @@ const Footer = ({ footer }) => {
               </p>
               <ul className="mt-2">
                 {footerColumn.links.map((link) => (
-                  <li key={link.id} className="text-green-400 py-1 px-1 -mx-1 hover:text-green-200">
+                  <li key={link.id} className="py-1 px-1 -mx-1 hover:text-green-400">
                     <CustomLink link={link}>
                       {link.text}
                     </CustomLink>
@@ -34,7 +34,7 @@ const Footer = ({ footer }) => {
           ))}
         </nav>
       </div>
-      <div className="text-sm bg-black bg-opacity-40 py-6 text-green-600">
+      <div className="text-sm bg-black bg-opacity-40 py-6 text-green-400">
         <div className="container">{footer.smallText}</div>
       </div>
     </footer>
