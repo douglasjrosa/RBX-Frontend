@@ -2,13 +2,23 @@ import { getStrapiMedia } from "utils/media";
 import PropTypes from "prop-types";
 import { mediaPropTypes } from "utils/types";
 
-const Image = ({ media, className }) => {
-  const { url, alternativeText } = media;
+const Image = props => {
+  const { url, alternativeText } = props.media;
   const fullUrl = getStrapiMedia(url);
 
-  return (
-    <img src={fullUrl} alt={alternativeText || ""} className={className} />
-  );
+  let newProps = {
+    src: fullUrl,
+    alt: alternativeText || props.alt || "",
+    className: props.className || "",
+    width: props.width || "",
+    height: props.height || ""
+  };
+  
+  for(let prop in newProps){
+    if(newProps[prop] === "") delete newProps[prop];
+  }
+  
+  return <img {...newProps} />;
 };
 
 Image.propTypes = {
