@@ -1,5 +1,4 @@
 import Image from "../elements/image";
-import RichText from "./rich-text";
 
 const ImageSection = ({ data }) => {
     const {url, alternativeText, width, height} = data.image;
@@ -12,7 +11,6 @@ const ImageSection = ({ data }) => {
                 width={width}
                 height={height}
             />
-            
         </div>
     );
 };
