@@ -21,7 +21,7 @@ const Footer = ({ footer }) => {
           {footer.columns.map((footerColumn) => (
             <div
               key={footerColumn.id}
-              className="mt-10 lg:mt-0 w-6/12 lg:w-auto"
+              className="mt-10 lg:mt-0 w-12/12 lg:w-auto"
             >
               <p className="uppercase tracking-wide font-semibold">
                 {footerColumn.title}
@@ -30,7 +30,7 @@ const Footer = ({ footer }) => {
                 {footerColumn.links.map((link) => (
                   <li
                     key={link.id}
-                    className="py-1 px-1 -mx-1 hover:text-green-400"
+                    className="py-3 lg:py-2 px-1 text-2xl lg:text-xl mx-1 hover:text-green-400"
                   >
                     <CustomLink link={link}>{link.text}</CustomLink>
                   </li>
