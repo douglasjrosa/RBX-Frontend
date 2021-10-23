@@ -29,6 +29,8 @@ const Navbar = ({ navbar }) => {
                   media={navbar.logo}
                   className="h-10 w-auto object-contain"
                   alt="Logomarca Ribermax"
+                  width="146"
+                  height="38"
                 />
               </a>
             </Link>

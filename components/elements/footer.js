@@ -9,7 +9,12 @@ const Footer = ({ footer }) => {
       <div className="container flex flex-col lg:flex-row lg:justify-between">
         <div>
           {footer.logo && (
-            <Image media={footer.logo} className="h-32 p-4 bg-opacity-75 bg-white w-auto object-contain" />
+            <Image
+              media={footer.logo}
+              className="h-32 p-4 bg-opacity-75 bg-white w-auto object-contain"
+              width="155"
+              height="92"
+            />
           )}
         </div>
         <nav className="flex flex-wrap flex-row lg:gap-20 items-start lg:justify-end mb-10 text-green-200">
@@ -23,10 +28,11 @@ const Footer = ({ footer }) => {
               </p>
               <ul className="mt-2">
                 {footerColumn.links.map((link) => (
-                  <li key={link.id} className="py-1 px-1 -mx-1 hover:text-green-400">
-                    <CustomLink link={link}>
-                      {link.text}
-                    </CustomLink>
+                  <li
+                    key={link.id}
+                    className="py-1 px-1 -mx-1 hover:text-green-400"
+                  >
+                    <CustomLink link={link}>{link.text}</CustomLink>
                   </li>
                 ))}
               </ul>

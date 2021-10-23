@@ -3,6 +3,7 @@ import Footer from "./elements/footer";
 import NotificationBanner from "./elements/notification-banner";
 import { useState } from "react";
 
+
 const Layout = ({ children, global }) => {
   const { navbar, footer, notificationBanner } = global;
 
