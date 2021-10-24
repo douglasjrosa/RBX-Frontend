@@ -30,7 +30,7 @@ const Footer = ({ footer }) => {
                 {footerColumn.links.map((link) => (
                   <li
                     key={link.id}
-                    className="py-3 lg:py-2 px-1 text-2xl lg:text-xl mx-1 hover:text-green-400"
+                    className="py-3 lg:py-2 px-1 text-3xl lg:text-xl mx-1 hover:text-green-400"
                   >
                     <CustomLink link={link}>{link.text}</CustomLink>
                   </li>
