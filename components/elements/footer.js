@@ -7,7 +7,10 @@ const Footer = ({ footer }) => {
   return (
     <footer className="pt-12 bg-opacity-90 bg-green-900">
       <div className="container flex flex-col lg:flex-row lg:justify-between">
-        <div>
+        <div
+          style={{ width: "250px", height: "155px", padding: "25px" }}
+          className="bg-white rounded-md bg-opacity-90"
+        >
           {footer.logo && (
             <Image
               media={footer.logo}
