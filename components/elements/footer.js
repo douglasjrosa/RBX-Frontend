@@ -11,9 +11,9 @@ const Footer = ({ footer }) => {
           {footer.logo && (
             <Image
               media={footer.logo}
-              className="h-32 p-4 bg-opacity-75 bg-white w-auto object-contain"
-              width="155"
-              height="92"
+              className="h-32 bg-opacity-75 bg-white object-contain"
+              width="200"
+              height="105"
             />
           )}
         </div>

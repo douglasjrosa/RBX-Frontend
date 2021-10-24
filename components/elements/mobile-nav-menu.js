@@ -21,7 +21,12 @@ const MobileNavMenu = ({ navbar, closeSelf }) => {
         {/* Top section */}
         <div className="flex flex-row justify-between py-2 items-center">
           {/* Company logo */}
-          <Image media={navbar.logo} className="h-8 w-auto object-contain" />
+          <Image
+            media={navbar.logo}
+            className="h-8 w-auto object-contain"
+            width="146"
+            height="38"
+          />
           {/* Close button */}
           <button onClick={closeSelf} className="py-1 px-1">
             <MdClose className="h-8 w-auto" />
@@ -29,7 +34,10 @@ const MobileNavMenu = ({ navbar, closeSelf }) => {
         </div>
         {/* Bottom section */}
         <div className="flex flex-col justify-end w-9/12 mx-auto">
-          <ul className="flex flex-col list-none gap-6 items-baseline text-xl mb-10" onClick={closeSelf} >
+          <ul
+            className="flex flex-col list-none gap-6 items-baseline text-xl mb-10"
+            onClick={closeSelf}
+          >
             {navbar.links.map((navLink) => (
               <li key={navLink.id} className="block w-full">
                 <CustomLink link={navLink}>

@@ -22,13 +22,18 @@ const FeatureRowsGroup = ({ data }) => {
           <div className="w-full sm:9/12 lg:w-4/12 max-h-full">
             {/* Images */}
             {feature.media.mime.startsWith("image") && (
-              <Image media={feature.media} className={classNames(
-                "w-full h-auto rounded-t-lg lg:rounded-none",
-                {
-                  "lg:rounded-l-lg": index % 2 === 0,
-                  "lg:rounded-r-lg": index % 2 === 1
-                }
-              )} />
+              <Image
+                media={feature.media}
+                className={classNames(
+                  "w-full h-auto rounded-t-lg lg:rounded-none",
+                  {
+                    "lg:rounded-l-lg": index % 2 === 0,
+                    "lg:rounded-r-lg": index % 2 === 1,
+                  }
+                )}
+                width="450"
+                height="350"
+              />
             )}
             {/* Videos */}
             {feature.media.mime.startsWith("video") && (

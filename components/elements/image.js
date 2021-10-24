@@ -1,3 +1,4 @@
+import NextImage from 'next/image';
 import { getStrapiMedia } from "utils/media";
 import PropTypes from "prop-types";
 import { mediaPropTypes } from "utils/types";
@@ -11,14 +12,14 @@ const Image = props => {
     alt: alternativeText || props.alt || "",
     className: props.className || "",
     width: props.width || "",
-    height: props.height || ""
+    height: props.height || "",
+    layout: props.layout || "" 
   };
   
   for(let prop in newProps){
     if(newProps[prop] === "") delete newProps[prop];
   }
-  
-  return <img {...newProps} />;
+  return <NextImage {...newProps} />;
 };
 
 Image.propTypes = {
