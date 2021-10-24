@@ -7,7 +7,7 @@ const NotificationBanner = ({ data: { text, type }, closeSelf }) => {
     <div
       className={classNames(
         // Common classes
-        "text-white px-2 py-2 fixed w-full z-40 py-3 bottom-0",
+        "text-white px-2 py-3 fixed w-full z-40 py-8 bg-opacity-90 bottom-0",
         {
           // Apply theme based on notification type
           "bg-blue-600": type === "info",
@@ -17,7 +17,7 @@ const NotificationBanner = ({ data: { text, type }, closeSelf }) => {
       )}
     >
       <div className="container flex flex-row justify-between items-center ">
-        <div className="rich-text-banner flex-1 text-xl">
+        <div className="rich-text-banner flex-1 leading-relaxed text-2xl">
           <Markdown children={text} />
         </div>
         <button
