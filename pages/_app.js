@@ -18,11 +18,14 @@ const MyApp = ({ Component, pageProps }) => {
 
   // Extract the data we need
   const { global } = pageProps;
+  const pageMetadata = pageProps.metadata;
+
   if (global == null) {
     return <ErrorPage statusCode={404} />;
   }
-  const { metadata } = global;
 
+  for(let prop in pageMetadata) if(!pageMetadata[prop]) delete pageMetadata[prop];
+  const metadata = { ...global.metadata, ...pageMetadata };
   
   return (
     <>
