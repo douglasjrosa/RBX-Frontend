@@ -28,3 +28,10 @@
     padding: 2em;
     box-shadow: 0.5em 0.5em 1em rgba(0,0,0,0.7);
 }
+
+
+@media screen and (min-width: 1022px) {
+    .feature-rows-group-card-rbx{
+        height: 321px;
+    }
+}

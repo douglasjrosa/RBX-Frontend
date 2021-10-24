@@ -13,7 +13,8 @@ const Image = props => {
     className: props.className || "",
     width: props.width || "",
     height: props.height || "",
-    layout: props.layout || "" 
+    layout: props.layout || "" ,
+    unsized: props.unsized || false
   };
   
   for(let prop in newProps){

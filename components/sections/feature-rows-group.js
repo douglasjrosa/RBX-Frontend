@@ -5,34 +5,34 @@ import CustomLink from "../elements/custom-link";
 
 const FeatureRowsGroup = ({ data }) => {
   return (
-    <div className="container flex flex-col gap-12 py-12">
+    <div className="container flex flex-col gap-10">
       {data.features.map((feature, index) => (
         <div
           className={classNames(
             // Common classes
-            "flex flex-col justify-start rounded-lg shadow-lg md:items-center bg-white lg:gap-28",
+            "flex flex-col justify-start md:px-8 lg:px-0 rounded-lg shadow-lg sm:items-center bg-white md:gap-10 feature-rows-group-card-rbx",
             {
-              "lg:flex-row": index % 2 === 0,
-              "lg:flex-row-reverse": index % 2 === 1,
+              "md:flex-row": index % 2 === 0,
+              "md:flex-row-reverse": index % 2 === 1,
             }
           )}
           key={feature.id}
         >
           {/* Media section */}
-          <div className="w-full sm:9/12 lg:w-4/12 max-h-full">
+          <div className="w-full lg:w-4/12 max-h-full">
             {/* Images */}
             {feature.media.mime.startsWith("image") && (
               <Image
                 media={feature.media}
                 className={classNames(
-                  "w-full h-auto rounded-t-lg lg:rounded-none",
+                  "w-full h-auto rounded-t-md md:rounded-md lg:rounded-none",
                   {
                     "lg:rounded-l-lg": index % 2 === 0,
                     "lg:rounded-r-lg": index % 2 === 1,
                   }
                 )}
-                width="450"
-                height="350"
+                width="900"
+                height="900"
               />
             )}
             {/* Videos */}
