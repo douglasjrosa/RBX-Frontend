@@ -3,7 +3,7 @@ import Markdown from "react-markdown";
 
 const FeatureColumnsGroup = ({ data }) => {
   return (
-    <div className="container flex flex-col lg:flex-row lg:flex-wrap gap-12 align-top py-12">
+    <div className="container flex flex-col lg:flex-row lg:flex-wrap gap-12 align-top">
       {data.features.map((feature) => (
         <div className="flex-1 text-lg card-rbx" key={feature.id}>
           <Image

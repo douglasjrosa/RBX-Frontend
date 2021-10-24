@@ -11,8 +11,8 @@ const Image = props => {
     src: fullUrl,
     alt: alternativeText || props.alt || "",
     className: props.className || "",
-    width: props.width || "",
-    height: props.height || "",
+    width: props.width || 900,
+    height: props.height || 750,
     layout: props.layout || "" ,
     unsized: props.unsized || false
   };
