@@ -10,8 +10,8 @@ const NotificationBanner = ({ data: { text, type }, closeSelf }) => {
         "text-white px-2 py-3 fixed w-full z-40 py-8 bg-opacity-90 bottom-0",
         {
           // Apply theme based on notification type
-          "bg-blue-600": type === "info",
-          "bg-orange-600": type === "warning",
+          "bg-gray-900": type === "info",
+          "bg-yellow-600": type === "warning",
           "bg-red-600": type === "alert",
         }
       )}
