@@ -29,7 +29,8 @@ const FeatureRowsGroup = ({ data }) => {
                 <Image
                   media={feature.media}
                   className={classNames(
-                    "w-full h-auto rounded-t-md md:rounded-md"
+                    "w-full h-auto md:rounded-md",
+                    {"rounded-t-md": !joinNextRow},
                   )}
                   width={feature.mediaWidth}
                   height={feature.mediaHeight}
