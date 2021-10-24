@@ -1,6 +1,7 @@
 import App from "next/app";
 import AppHead from "@/components/elements/head";
 import ErrorPage from "next/error";
+import { useEffect } from 'react'
 import { useRouter } from "next/router";
 import { DefaultSeo } from "next-seo";
 import { getStrapiMedia } from "utils/media";
@@ -9,12 +10,27 @@ import Layout from "@/components/layout";
 import "@/styles/index.css";
 import "@/styles/rbx.css";
 
+//import * as gtag from 'lib/gtag';
+//import Analytics from 'components/Analytics';
+
 const MyApp = ({ Component, pageProps }) => {
   // Prevent Next bug when it tries to render the [[...slug]] route
   const router = useRouter();
   if (router.asPath === "/[[...slug]]") {
     return null;
   }
+
+/*
+  useEffect(() => {
+    const handleRouteChange = url => {
+      gtag.pageview(url)
+    }
+    router.events.on('routeChangeComplete', handleRouteChange)
+    return () => {
+      router.events.off('routeChangeComplete', handleRouteChange)
+    }
+  }, [router.events])
+*/
 
   // Extract the data we need
   const { global } = pageProps;
@@ -54,6 +70,7 @@ const MyApp = ({ Component, pageProps }) => {
       <Layout global={global}>
         <Component {...pageProps} />
       </Layout>
+      {/* <Analytics /> */}
     </>
   );
 };

@@ -14,7 +14,7 @@ const Image = props => {
     width: props.width || 900,
     height: props.height || 750,
     layout: props.layout || "" ,
-    unsized: props.unsized || false
+    unsized: props.unsized || "false"
   };
   
   for(let prop in newProps){
