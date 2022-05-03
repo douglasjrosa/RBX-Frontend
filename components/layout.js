@@ -2,11 +2,14 @@ import Navbar from "./elements/navbar";
 import Footer from "./elements/footer";
 import NotificationBanner from "./elements/notification-banner";
 import { useState } from "react";
+import WhatsAppButton from "./elements/whatsapp-button";
+
 
 const Layout = ({ children, global }) => {
   const { navbar, footer, notificationBanner } = global;
 
   const [bannerIsShown, setBannerIsShown] = useState(true);
+  const whatsappImage = {...global.whatsappImage};
 
   return (
     <div className="min-h-screen bg-rbx-porto bg-fixed bg-center bg-cover">
@@ -20,6 +23,12 @@ const Layout = ({ children, global }) => {
         </div>
         {/* Aligned to the bottom */}
         <Footer footer={footer} />
+        {global.whatsappImage && global.whatsappContacts[0] && (
+          <WhatsAppButton
+            media={whatsappImage}
+            contatos={global.whatsappContacts}
+          />
+        )}
         {notificationBanner && bannerIsShown && (
           <NotificationBanner
             data={notificationBanner}

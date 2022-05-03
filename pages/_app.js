@@ -42,10 +42,11 @@ const MyApp = ({ Component, pageProps }) => {
 
   for(let prop in pageMetadata) if(!pageMetadata[prop]) delete pageMetadata[prop];
   const metadata = { ...global.metadata, ...pageMetadata };
+  const favicon = getStrapiMedia(global.favicon.url);
   
   return (
     <>
-      <AppHead favicon={getStrapiMedia(global.favicon.url)} />
+      <AppHead favicon={favicon} />
       {/* Global site metadata */}
       <DefaultSeo
         titleTemplate={`%s | ${global.metaTitleSuffix}`}
