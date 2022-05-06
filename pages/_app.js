@@ -1,26 +1,26 @@
-import App from "next/app";
-import AppHead from "@/components/elements/head";
-import ErrorPage from "next/error";
-import { useEffect } from 'react'
-import { useRouter } from "next/router";
-import { DefaultSeo } from "next-seo";
-import { getStrapiMedia } from "utils/media";
-import { getGlobalData } from "utils/api";
-import Layout from "@/components/layout";
-import "@/styles/index.css";
-import "@/styles/rbx.css";
+import App from 'next/app';
+import AppHead from '@/components/elements/head';
+import ErrorPage from 'next/error';
+import { useEffect, useState } from 'react';
+import { useRouter } from 'next/router';
+import { DefaultSeo } from 'next-seo';
+import { getStrapiMedia } from 'utils/media';
+import { getGlobalData } from 'utils/api';
+import Layout from '@/components/layout';
+import '@/styles/index.css';
+import '@/styles/rbx.css';
 
 //import * as gtag from 'lib/gtag';
 //import Analytics from 'components/Analytics';
 
 const MyApp = ({ Component, pageProps }) => {
-  // Prevent Next bug when it tries to render the [[...slug]] route
-  const router = useRouter();
-  if (router.asPath === "/[[...slug]]") {
-    return null;
-  }
+	// Prevent Next bug when it tries to render the [[...slug]] route
+	const router = useRouter();
+	if (router.asPath === '/[[...slug]]') {
+		return null;
+	}
 
-/*
+	/*
   useEffect(() => {
     const handleRouteChange = url => {
       gtag.pageview(url)
@@ -32,48 +32,56 @@ const MyApp = ({ Component, pageProps }) => {
   }, [router.events])
 */
 
-  // Extract the data we need
-  const { global } = pageProps;
-  const pageMetadata = pageProps.metadata;
+	const [mounted, setMounted] = useState(false);
 
-  if (global == null) {
-    return <ErrorPage statusCode={404} />;
-  }
+	useEffect(() => setMounted(true), []);
+	if (!mounted) return null;
 
-  for(let prop in pageMetadata) if(!pageMetadata[prop]) delete pageMetadata[prop];
-  const metadata = { ...global.metadata, ...pageMetadata };
-  const favicon = getStrapiMedia(global.favicon.url);
-  
-  return (
-    <>
-      <AppHead favicon={favicon} />
-      {/* Global site metadata */}
-      <DefaultSeo
-        titleTemplate={`%s | ${global.metaTitleSuffix}`}
-        title={"Page"}
-        description={metadata.metaDescription}
-        openGraph={{
-          images: Object.values(metadata.shareImage.formats).map((image) => {
-            return {
-              url: getStrapiMedia(image.url),
-              width: image.width,
-              height: image.height,
-            };
-          }),
-        }}
-        twitter={{
-          cardType: metadata.twitterCardType,
-          handle: metadata.twitterUsername,
-        }}
-      />
-      {/* Display the content */}
+	// Extract the data we need
+	const { global } = pageProps;
+	const pageMetadata = pageProps.metadata;
 
-      <Layout global={global}>
-        <Component {...pageProps} />
-      </Layout>
-      {/* <Analytics /> */}
-    </>
-  );
+	if (global == null) {
+		return <ErrorPage statusCode={404} />;
+	}
+
+	for (let prop in pageMetadata)
+		if (!pageMetadata[prop]) delete pageMetadata[prop];
+	const metadata = { ...global.metadata, ...pageMetadata };
+	const favicon = getStrapiMedia(global.favicon.url);
+
+	return (
+		<>
+			<AppHead favicon={favicon} />
+			{/* Global site metadata */}
+			<DefaultSeo
+				titleTemplate={`%s | ${global.metaTitleSuffix}`}
+				title={'Page'}
+				description={metadata.metaDescription}
+				openGraph={{
+					images: Object.values(metadata.shareImage.formats).map(
+						(image) => {
+							return {
+								url: getStrapiMedia(image.url),
+								width: image.width,
+								height: image.height
+							};
+						}
+					)
+				}}
+				twitter={{
+					cardType: metadata.twitterCardType,
+					handle: metadata.twitterUsername
+				}}
+			/>
+			{/* Display the content */}
+
+			<Layout global={global}>
+				<Component {...pageProps} />
+			</Layout>
+			{/* <Analytics /> */}
+		</>
+	);
 };
 
 // getInitialProps disables automatic static optimization for pages that don't
@@ -81,12 +89,12 @@ const MyApp = ({ Component, pageProps }) => {
 // Hopefully we can replace this with getStaticProps once this issue is fixed:
 // https://github.com/vercel/next.js/discussions/10949
 MyApp.getInitialProps = async (ctx) => {
-  // Calls page's `getInitialProps` and fills `appProps.pageProps`
-  const appProps = await App.getInitialProps(ctx);
-  // Fetch global site settings from Strapi
-  const global = await getGlobalData();
-  // Pass the data to our page via props
-  return { ...appProps, pageProps: { global, path: ctx.pathname } };
+	// Calls page's `getInitialProps` and fills `appProps.pageProps`
+	const appProps = await App.getInitialProps(ctx);
+	// Fetch global site settings from Strapi
+	const global = await getGlobalData();
+	// Pass the data to our page via props
+	return { ...appProps, pageProps: { global, path: ctx.pathname } };
 };
 
 export default MyApp;

@@ -7,7 +7,6 @@ const Image = (props) => {
 	const { media } = props;
 	const { url, alternativeText, className, width, height, layout, unsized } = media;
 	const fullUrl = getStrapiMedia(url);
-
 	let newProps = {
 		src: fullUrl,
 		alt: props.alternativeText || alternativeText,
