@@ -6,10 +6,10 @@ import WhatsAppButton from "./elements/whatsapp-button";
 
 
 const Layout = ({ children, global }) => {
-  const { navbar, footer, notificationBanner } = global;
+  const { navbar, footer, notificationBanner, whatsappImage, whatsappContacts, whatsappMsg } = global;
+  //const whatsappImage = {...global.whatsappImage};
 
   const [bannerIsShown, setBannerIsShown] = useState(true);
-  const whatsappImage = {...global.whatsappImage};
 
   return (
     <div className="min-h-screen bg-rbx-porto bg-fixed bg-center bg-cover">
@@ -23,10 +23,11 @@ const Layout = ({ children, global }) => {
         </div>
         {/* Aligned to the bottom */}
         <Footer footer={footer} />
-        {global.whatsappImage && global.whatsappContacts[0] && (
+        {whatsappImage && whatsappContacts.length && whatsappMsg && (
           <WhatsAppButton
             media={whatsappImage}
-            contatos={global.whatsappContacts}
+            contatos={whatsappContacts}
+			msg={whatsappMsg}
           />
         )}
         {notificationBanner && bannerIsShown && (

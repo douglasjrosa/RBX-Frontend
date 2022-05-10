@@ -1,10 +1,29 @@
 import Image from './image';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
+
+const isMobile = () => {
+	const agents = [
+		/Android/i,
+		/webOs/i,
+		/iPhone/i,
+		/iPad/i,
+		/iPod/i,
+		/BlackBerry/i,
+		/Windows Phone/i
+	];
+	let resp = false;
+	agents.map((agent) => {
+		if (navigator.userAgent.match(agent)) resp = true;
+	});
+	return resp;
+};
 
 const WhatsAppButton = (props) => {
-	const { media, contatos } = props;
+	const { media, contatos, msg } = props;
 
 	const [buttonIsClicked, setButtonIsClicked] = useState(false);
+	const whatsappInterface = isMobile() ? 'api' : 'web';
+	const url = 'https://' + whatsappInterface + '.whatsapp.com/send?phone=';
 
 	return (
 		<div>
@@ -16,7 +35,7 @@ const WhatsAppButton = (props) => {
 					aria-haspopup="true"
 					onClick={() => setButtonIsClicked(!buttonIsClicked)}
 				>
-					<Image media={media} width="80" height="80" />
+					<Image media={media} width="80" height="80" priority />
 				</button>
 			</div>
 			{buttonIsClicked && (
@@ -24,11 +43,13 @@ const WhatsAppButton = (props) => {
 					{contatos &&
 						contatos.map((contato) => (
 							<a
+								key={contato.id}
 								className="rounded-full bg-green-500 hover:bg-green-600 py-1 px-6 text-white text-lg flex my-2"
 								href={
-									'https://api.whatsapp.com/send?phone=' +
+									url +
 									contato.fone +
-									'&text=Ol%C3%A1'
+									'&text=' +
+									encodeURI(msg)
 								}
 								target="_blank"
 							>
@@ -37,7 +58,7 @@ const WhatsAppButton = (props) => {
 									onClick={() => setButtonIsClicked(false)}
 								>
 									<svg
-										class="w-6 h-6 text-white fill-current my-auto"
+										className="w-6 h-6 text-white fill-current my-auto"
 										xmlns="http://www.w3.org/2000/svg"
 										viewBox="0 0 448 512"
 									>
