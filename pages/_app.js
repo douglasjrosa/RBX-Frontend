@@ -10,8 +10,8 @@ import Layout from '@/components/layout';
 import '@/styles/index.css';
 import '@/styles/rbx.css';
 
-//import * as gtag from 'lib/gtag';
-//import Analytics from 'components/Analytics';
+import * as gtag from 'lib/gtag';
+import Analytics from 'components/analytics';
 
 const MyApp = ({ Component, pageProps }) => {
 	// Prevent Next bug when it tries to render the [[...slug]] route
@@ -20,20 +20,19 @@ const MyApp = ({ Component, pageProps }) => {
 		return null;
 	}
 
-	/*
-  useEffect(() => {
-    const handleRouteChange = url => {
-      gtag.pageview(url)
-    }
-    router.events.on('routeChangeComplete', handleRouteChange)
-    return () => {
-      router.events.off('routeChangeComplete', handleRouteChange)
-    }
-  }, [router.events])
-*/
+	useEffect(() => {
+		const handleRouteChange = (url) => {
+			gtag.pageview(url);
+		};
+		
+		router.events.on('routeChangeComplete', handleRouteChange);
+		return () => {
+			router.events.off('routeChangeComplete', handleRouteChange);
+		};
+	}, []);
 
+	
 	const [mounted, setMounted] = useState(false);
-
 	useEffect(() => setMounted(true), []);
 	if (!mounted) return null;
 
@@ -79,7 +78,7 @@ const MyApp = ({ Component, pageProps }) => {
 			<Layout global={global}>
 				<Component {...pageProps} />
 			</Layout>
-			{/* <Analytics /> */}
+			<Analytics />
 		</>
 	);
 };
