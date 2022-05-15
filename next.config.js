@@ -6,7 +6,7 @@ module.exports = {
   async headers() {
     return [
       {
-        source: '*',
+        source: '/:all*(svg|jpg|png)',
         locale: false,
         headers: [
           {
