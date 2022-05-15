@@ -8,10 +8,6 @@ import { useRouter } from 'next/dist/client/router';
 // optional catch all routes feature. See the related docs:
 // https://nextjs.org/docs/routing/dynamic-routes#optional-catch-all-routes
 
-export const config = {
-	unstable_runtimeJS: false
-};
-
 const DynamicPage = ({ sections, metadata, preview }) => {
 	const router = useRouter();
 
@@ -75,8 +71,7 @@ export async function getStaticProps({ params, preview = null }) {
 			preview,
 			sections: contentSections,
 			metadata
-		},
-		revalidate: 31536000
+		}
 	};
 }
 
