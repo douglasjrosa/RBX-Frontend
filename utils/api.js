@@ -10,7 +10,6 @@ export async function fetchAPI(path, options = {}) {
   const defaultOptions = {
     headers: {
       'Content-Type': 'application/json',
-	  'Cache-Control': 'public, max-age=31536000, immutable'
     },
   }
   const mergedOptions = {
