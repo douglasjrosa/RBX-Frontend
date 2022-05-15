@@ -1,6 +1,6 @@
 export function getStrapiURL(path) {
   return `${
-    process.env.NEXT_PUBLIC_STRAPI_API_URL || 'http://localhost:1337'
+    process.env.NEXT_PUBLIC_STRAPI_API_URL
   }${path}`
 }
 
@@ -10,6 +10,7 @@ export async function fetchAPI(path, options = {}) {
   const defaultOptions = {
     headers: {
       'Content-Type': 'application/json',
+	  'Cache-Control': 'public, max-age=31536000, immutable'
     },
   }
   const mergedOptions = {
