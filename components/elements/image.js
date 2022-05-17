@@ -5,16 +5,20 @@ import { mediaPropTypes } from 'utils/types';
 
 const Image = (props) => {
 	const { media } = props;
-	const { url, alternativeText, className, width, height, layout, unsized } = media;
-	const fullUrl = getStrapiMedia(url);
+	const { url, alternativeText, className, width, height, layout, unsized } =
+		media;
+
+	let fullUrl = getStrapiMedia(url);
+	if (media.local != undefined) { fullUrl = url; }
+	
+
 	let newProps = {
 		src: fullUrl,
 		alt: props.alternativeText || alternativeText,
 		className: props.className || className,
 		width: props.width || width,
 		height: props.height || height,
-		layout: props.layout || layout,
-		unsized: props.unsized || unsized
+		layout: props.layout || layout
 	};
 
 	for (let prop in newProps) {

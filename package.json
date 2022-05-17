@@ -23,6 +23,7 @@
     "react-dom": "^18.1.0",
     "react-icons": "^3.10.0",
     "react-markdown": "^6.0.2",
+    "sharp": "^0.30.4",
     "sitemap": "^7.0.0",
     "tailwindcss": "npm:@tailwindcss/postcss7-compat@^2.2.2",
     "yup": "^0.32.8"
@@ -31,6 +32,6 @@
     "eslint": "8.1.0",
     "eslint-config-next": "11.1.2",
     "postcss-flexbugs-fixes": "4.2.1",
-    "postcss-preset-env": "^6.7.0"
+    "postcss-preset-env": "^7"
   }
 }
