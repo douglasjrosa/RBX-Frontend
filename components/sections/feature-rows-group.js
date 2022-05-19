@@ -6,7 +6,7 @@ import CustomLink from "../elements/custom-link";
 const FeatureRowsGroup = ({ data }) => {
   var joinNextRow = false;
   return (
-    <div className="container flex flex-col">
+    <div className="container flex flex-col z-20">
       {data.features.map((feature, index) => {
         const row = (
           <div

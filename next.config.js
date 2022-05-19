@@ -2,8 +2,7 @@ module.exports = {
   images: {
     domains: ["rbx-backend-media.s3.sa-east-1.amazonaws.com"],
     minimumCacheTTL: 315360000,
-	'x-nextjs-cache': 'HIT',
-	's-maxage': 777777777
+    disableStaticImages: true
   },
   async headers() {
     return [
