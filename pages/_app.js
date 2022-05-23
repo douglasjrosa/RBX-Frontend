@@ -9,6 +9,7 @@ import { getGlobalData } from 'utils/api';
 import Layout from '@/components/layout';
 import '@/styles/index.css';
 import '@/styles/rbx.css';
+import Loading from '@/components/elements/loading'
 
 import * as gtag from 'lib/gtag';
 import Analytics from 'components/analytics';
@@ -16,9 +17,7 @@ import Analytics from 'components/analytics';
 const MyApp = ({ Component, pageProps }) => {
 	// Prevent Next bug when it tries to render the [[...slug]] route
 	const router = useRouter();
-	if (router.asPath === '/[[...slug]]') {
-		return null;
-	}
+	if (router.asPath === '/[[...slug]]')  return <Loading />;
 
 	useEffect(() => {
 		const handleRouteChange = (url) => {
@@ -33,8 +32,9 @@ const MyApp = ({ Component, pageProps }) => {
 
 	
 	const [mounted, setMounted] = useState(false);
+	
 	useEffect(() => setMounted(true), []);
-	if (!mounted) return null;
+	if (!mounted) return <Loading />;
 
 	// Extract the data we need
 	const { global } = pageProps;
