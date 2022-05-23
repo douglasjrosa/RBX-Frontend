@@ -9,13 +9,15 @@ const RichText = ({ data }) => {
 		>
 			<Markdown
 				components={{
-					img: ({ node, ...props }) => {
+					img: ({ node, ...props }) => {	
+						const { src, alt } = props;
 						return (
 							<span className="text-center block">
 								<Image
 									media={{
-										url: props.src,
-										alternativeText: props.alt,
+										url: src,
+										name: alt,
+										alternativeText: alt,
 										mime: "none",
 										id: "none"
 									}}

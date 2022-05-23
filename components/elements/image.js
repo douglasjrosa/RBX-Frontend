@@ -1,20 +1,20 @@
 import NextImage from 'next/image';
-import { getStrapiMedia } from 'utils/media';
 import PropTypes from 'prop-types';
 import { mediaPropTypes } from 'utils/types';
 
 const Image = (props) => {
 	const { media } = props;
-	const { url, alternativeText, className, width, height, layout, unsized } = media;
-	const fullUrl = getStrapiMedia(url);
+	const { alternativeText, className, width, height, layout } = media;
+	
+	const src = require('../../public/images/' + media.name).default.src;
+
 	let newProps = {
-		src: fullUrl,
+		src,
 		alt: props.alternativeText || alternativeText,
 		className: props.className || className,
 		width: props.width || width,
 		height: props.height || height,
 		layout: props.layout || layout,
-		unsized: props.unsized || unsized
 	};
 
 	for (let prop in newProps) {
