@@ -1,6 +1,5 @@
 import Image from './image';
 import { useState } from 'react';
-import zap from '@/public/images/Whatsapp-Ribermax.webp';
 
 const isMobile = () => {
 	const agents = [
@@ -21,11 +20,8 @@ const isMobile = () => {
 
 const WhatsAppButton = (props) => {
 	const { media, contatos, msg } = props;
-	media.local = true;
 
 	const [buttonIsClicked, setButtonIsClicked] = useState(false);
-
-	media.url = zap.src;
 
 	const whatsappInterface = isMobile() ? 'api' : 'web';
 	const url = 'https://' + whatsappInterface + '.whatsapp.com/send?phone=';
