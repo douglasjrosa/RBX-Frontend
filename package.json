@@ -34,5 +34,6 @@
     "eslint-config-next": "11.1.2",
     "postcss-flexbugs-fixes": "4.2.1",
     "postcss-preset-env": "^7"
-  }
+  },
+  "license": "MIT"
 }
