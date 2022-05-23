@@ -5,7 +5,7 @@ import Image from '../elements/image';
 const RichText = ({ data }) => {
 	return (
 		<div
-			className="container prose-lg max-w-4xl bg-white rounded-lg shadow-lg p-12 richText-rbx block"
+			className="container prose-lg max-w-4xl z-20 bg-white rounded-lg shadow-lg p-12 richText-rbx block"
 		>
 			<Markdown
 				components={{

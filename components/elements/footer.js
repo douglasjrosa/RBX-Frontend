@@ -5,7 +5,11 @@ import CustomLink from './custom-link';
 
 const Footer = ({ footer }) => {
 	return (
+<<<<<<< HEAD
 		<footer className="bg-opacity-90 bg-green-900 relative">
+=======
+		<footer className="bg-opacity-90 bg-green-900 z-20">
+>>>>>>> 7a17585de6cdeed51efbc2661231ef2c185a9ca4
 			<div className="grid grid-cols md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4 p-12">
 				{footer.columns.map((footerColumn) => (
 					<div key={footerColumn.id} className="col mt-10 lg:mt-0">

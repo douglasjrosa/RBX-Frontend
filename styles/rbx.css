@@ -1,3 +1,9 @@
+.bg-rbx:first-child{
+	min-height: 110vh;
+	min-width: 110vw;
+	aspect-ratio: 4 / 2.8;
+}
+
 .richText-rbx h1{
     color: #02542d;
 }

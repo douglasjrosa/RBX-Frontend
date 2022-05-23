@@ -14,7 +14,7 @@ const Image = (props) => {
 		className: props.className || className,
 		width: props.width || width,
 		height: props.height || height,
-		layout: props.layout || layout,
+		layout: props.layout || layout
 	};
 
 	for (let prop in newProps) {

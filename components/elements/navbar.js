@@ -14,6 +14,7 @@ import { getButtonAppearance } from "utils/button";
 import CustomLink from "./custom-link";
 
 const Navbar = ({ navbar }) => {
+	//console.log(navbar)
   const [mobileMenuIsShown, setMobileMenuIsShown] = useState(false);
 
   return (
