@@ -1,5 +1,9 @@
+import Loader from '@/components/elements/loader';
 
-import Image from 'next/image'
-import gif from '@/public/images/loader-info.gif'
-
-export default () => <Image src={gif.src} layout='fill' className='opacity-40' priority />;
+export default () => (
+	<div className="flex w-full min-h-screen">
+		<div className="m-auto text-2xl">
+			<Loader className="h-40 w-40 text-green-600" />
+		</div>
+	</div>
+);

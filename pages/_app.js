@@ -9,30 +9,30 @@ import { getGlobalData } from 'utils/api';
 import Layout from '@/components/layout';
 import '@/styles/index.css';
 import '@/styles/rbx.css';
-import Loading from '@/components/elements/loading'
+import Loading from '@/components/elements/loading';
 
 import * as gtag from 'lib/gtag';
 import Analytics from 'components/analytics';
 
 const MyApp = ({ Component, pageProps }) => {
 	// Prevent Next bug when it tries to render the [[...slug]] route
+
 	const router = useRouter();
-	if (router.asPath === '/[[...slug]]')  return <Loading />;
+	if (router.asPath === '/[[...slug]]') return <Loading />;
 
 	useEffect(() => {
 		const handleRouteChange = (url) => {
 			gtag.pageview(url);
 		};
-		
+
 		router.events.on('routeChangeComplete', handleRouteChange);
 		return () => {
 			router.events.off('routeChangeComplete', handleRouteChange);
 		};
 	}, []);
 
-	
 	const [mounted, setMounted] = useState(false);
-	
+
 	useEffect(() => setMounted(true), []);
 	if (!mounted) return <Loading />;
 

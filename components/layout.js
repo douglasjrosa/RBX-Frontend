@@ -26,7 +26,7 @@ const Layout = ({ children, global }) => {
 						<Navbar navbar={navbar} />
 					</div>
 					<div className="relative my-36 z-10">{children}</div>
-					<div className="lg:fixed lg:bg-porto bottom-0 top-0 h-full w-full z-0 lg:opacity-40">
+					<div className="lg:fixed lg:bg-porto bottom-0 top-0 h-full w-full z-0 lg:opacity-60">
 						<Image
 							media={{
 								id: 'none',
