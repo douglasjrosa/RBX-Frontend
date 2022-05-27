@@ -13,7 +13,7 @@ const Layout = ({ children, global }) => {
 		whatsappImage,
 		whatsappContacts,
 		whatsappMsg
-	} = global;
+	} = global;	
 
 	const [bannerIsShown, setBannerIsShown] = useState(true);
 

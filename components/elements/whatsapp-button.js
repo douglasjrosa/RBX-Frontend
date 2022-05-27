@@ -1,7 +1,9 @@
 import Image from './image';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 const isMobile = () => {
+	const [mounted, setMounted] = useState(false);
+	useEffect(() => setMounted(true), []);
 	const agents = [
 		/Android/i,
 		/webOs/i,
@@ -13,12 +15,12 @@ const isMobile = () => {
 	];
 	let resp = false;
 	agents.map((agent) => {
-		if (navigator.userAgent.match(agent)) resp = true;
+		if (mounted && navigator.userAgent.match(agent)) resp = true;
 	});
 	return resp;
 };
 
-const WhatsAppButton = (props) => {
+const WhatsAppButton = props => {
 	const { media, contatos, msg } = props;
 
 	const [buttonIsClicked, setButtonIsClicked] = useState(false);
@@ -26,9 +28,10 @@ const WhatsAppButton = (props) => {
 	const whatsappInterface = isMobile() ? 'api' : 'web';
 	const url = 'https://' + whatsappInterface + '.whatsapp.com/send?phone=';
 	return (
-		<div>
+		<div className='z-30'>
 			<div className="fixed bottom-24 right-5">
 				<button
+					className='w-24'
 					type="button"
 					key="menu-button"
 					aria-expanded="true"

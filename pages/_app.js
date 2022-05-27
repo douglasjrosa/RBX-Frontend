@@ -1,7 +1,7 @@
 import App from 'next/app';
 import AppHead from '@/components/elements/head';
 import ErrorPage from 'next/error';
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { useRouter } from 'next/router';
 import { DefaultSeo } from 'next-seo';
 import { getStrapiMedia } from 'utils/media';
@@ -31,11 +31,6 @@ const MyApp = ({ Component, pageProps }) => {
 		};
 	}, []);
 
-	const [mounted, setMounted] = useState(false);
-
-	useEffect(() => setMounted(true), []);
-	if (!mounted) return <Loading />;
-
 	// Extract the data we need
 	const { global } = pageProps;
 	const pageMetadata = pageProps.metadata;
@@ -59,7 +54,7 @@ const MyApp = ({ Component, pageProps }) => {
 				description={metadata.metaDescription}
 				openGraph={{
 					images: Object.values(metadata.shareImage.formats).map(
-						(image) => {
+						image => {
 							return {
 								url: getStrapiMedia(image.url),
 								width: image.width,
