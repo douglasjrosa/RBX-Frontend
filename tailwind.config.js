@@ -15,7 +15,7 @@ module.exports = {
         },
       },
       backgroundImage: theme => ({
-        'rbx-porto': "url('/_next/static/media/porto de santos.f0cc12d4.jpg')",
+        'rbx-porto': "url('/_next/static/media/porto de santos optimized.c86f1e87.avif')",
         'rbx-forest': "url('https://rbx-backend-media.s3.sa-east-1.amazonaws.com/floresta_min_min_61154ca14d.webp')",
         'rbx-white': "url('https://rbx-backend-media.s3.sa-east-1.amazonaws.com/bg_bloco_min_8981be1e00.webp')",
         'rbx-green': "url('https://rbx-backend-media.s3.sa-east-1.amazonaws.com/bg_h1_d355630fd8.webp')"
