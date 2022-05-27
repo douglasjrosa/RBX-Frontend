@@ -2,7 +2,7 @@ import NextImage from 'next/image';
 import PropTypes from 'prop-types';
 import { mediaPropTypes } from 'utils/types';
 
-const Image = (props) => {
+const Image = props => {
 	const { media } = props;
 	const { alternativeText, className, width, height, layout } = media;
 
