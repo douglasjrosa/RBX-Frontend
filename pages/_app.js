@@ -1,7 +1,7 @@
 import App from 'next/app';
 import AppHead from '@/components/elements/head';
 import ErrorPage from 'next/error';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 import { DefaultSeo } from 'next-seo';
 import { getStrapiMedia } from 'utils/media';
@@ -43,7 +43,12 @@ const MyApp = ({ Component, pageProps }) => {
 		if (!pageMetadata[prop]) delete pageMetadata[prop];
 	const metadata = { ...global.metadata, ...pageMetadata };
 	const favicon = getStrapiMedia(global.favicon.url);
-	
+
+	const [mounted, setMounted] = useState(false);
+
+	useEffect(() => setMounted(true), []);
+	if (!mounted) return <Loading />;
+
 	return (
 		<>
 			<AppHead favicon={favicon} />
