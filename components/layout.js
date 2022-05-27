@@ -43,7 +43,7 @@ const Layout = ({ children, global }) => {
 							priority="true"
 						/>
 					</div>
-					{mounted && <div className="relative my-36 z-10">{children}</div>}
+					<div className="relative my-36 z-10">{children}</div>
 				</div>
 				{/* Aligned to the bottom */}
 				{mounted && <Footer footer={footer} />}
