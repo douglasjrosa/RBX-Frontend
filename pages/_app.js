@@ -15,8 +15,8 @@ import * as gtag from 'lib/gtag';
 import Analytics from 'components/analytics';
 
 const MyApp = ({ Component, pageProps }) => {
+	
 	// Prevent Next bug when it tries to render the [[...slug]] route
-
 	const router = useRouter();
 	if (router.asPath === '/[[...slug]]') return <Loading />;
 
@@ -47,7 +47,6 @@ const MyApp = ({ Component, pageProps }) => {
 	const [mounted, setMounted] = useState(false);
 
 	useEffect(() => setMounted(true), []);
-	if (!mounted) return <Loading />;
 
 	return (
 		<>
@@ -76,7 +75,8 @@ const MyApp = ({ Component, pageProps }) => {
 			{/* Display the content */}
 
 			<Layout global={global}>
-				<Component {...pageProps} />
+				{!mounted && <Loading />}
+				{mounted && <Component {...pageProps} />}
 			</Layout>
 			<Analytics />
 		</>
