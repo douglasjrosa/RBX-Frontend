@@ -78,7 +78,7 @@ const MyApp = ({ Component, pageProps }) => {
 				{!mounted && <Loading />}
 				{mounted && <Component {...pageProps} />}
 			</Layout>
-			<Analytics />
+			{mounted && <Analytics />}
 		</>
 	);
 };

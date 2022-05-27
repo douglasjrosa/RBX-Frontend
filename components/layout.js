@@ -1,7 +1,7 @@
 import Navbar from './elements/navbar';
 import Footer from './elements/footer';
 import NotificationBanner from './elements/notification-banner';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import WhatsAppButton from './elements/whatsapp-button';
 import Image from '@/components/elements/image';
 
@@ -17,6 +17,9 @@ const Layout = ({ children, global }) => {
 
 	const [bannerIsShown, setBannerIsShown] = useState(true);
 
+	const [mounted, setMounted] = useState(false);
+	useEffect(() => setMounted(true), []);
+
 	return (
 		<div>
 			<div className="flex flex-col justify-between">
@@ -25,7 +28,6 @@ const Layout = ({ children, global }) => {
 					<div className="fixed w-full z-50">
 						<Navbar navbar={navbar} />
 					</div>
-					<div className="relative my-36 z-10">{children}</div>
 					<div className="lg:fixed lg:bg-porto bottom-0 top-0 h-full w-full z-0 lg:opacity-60">
 						<Image
 							media={{
@@ -38,20 +40,21 @@ const Layout = ({ children, global }) => {
 							width={1500}
 							height={1000}
 							layout="responsive"
-							priority
+							priority="true"
 						/>
 					</div>
+					{mounted && <div className="relative my-36 z-10">{children}</div>}
 				</div>
 				{/* Aligned to the bottom */}
-				<Footer footer={footer} />
-				{whatsappImage && whatsappContacts.length && whatsappMsg && (
+				{mounted && <Footer footer={footer} />}
+				{mounted && whatsappImage && whatsappContacts.length && whatsappMsg && (
 					<WhatsAppButton
 						media={whatsappImage}
 						contatos={whatsappContacts}
 						msg={whatsappMsg}
 					/>
 				)}
-				{notificationBanner && bannerIsShown && (
+				{mounted && notificationBanner && bannerIsShown && (
 					<NotificationBanner
 						data={notificationBanner}
 						closeSelf={() => setBannerIsShown(false)}
