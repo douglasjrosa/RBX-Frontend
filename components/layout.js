@@ -1,9 +1,9 @@
 import Navbar from './elements/navbar';
 import Footer from './elements/footer';
 import NotificationBanner from './elements/notification-banner';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import WhatsAppButton from './elements/whatsapp-button';
-import Image from '@/components/elements/image';
+import Loading from '@/components/elements/loading';
 
 const Layout = ({ children, global }) => {
 	const {
@@ -16,6 +16,8 @@ const Layout = ({ children, global }) => {
 	} = global;
 
 	const [bannerIsShown, setBannerIsShown] = useState(true);
+	const [mounted, setMounted] = useState(false);
+	useEffect(() => setMounted(true), []);
 
 	return (
 		<div>
@@ -25,7 +27,10 @@ const Layout = ({ children, global }) => {
 						<div className="fixed w-full z-50">
 							<Navbar navbar={navbar} />
 						</div>
-						<div className="relative my-36 z-10">{children}</div>
+						<div className="relative my-36 z-10">
+							{!mounted && <Loading />}
+							{mounted && children}
+							</div>
 					</div>
 					<Footer footer={footer} />
 					{whatsappImage &&

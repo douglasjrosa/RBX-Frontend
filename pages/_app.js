@@ -1,7 +1,7 @@
 import App from 'next/app';
 import AppHead from '@/components/elements/head';
 import ErrorPage from 'next/error';
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { useRouter } from 'next/router';
 import { DefaultSeo } from 'next-seo';
 import { getStrapiMedia } from 'utils/media';
@@ -9,7 +9,6 @@ import { getGlobalData } from 'utils/api';
 import Layout from '@/components/layout';
 import '@/styles/index.css';
 import '@/styles/rbx.css';
-import Loading from '@/components/elements/loading';
 
 import * as gtag from 'lib/gtag';
 import Analytics from 'components/analytics';
@@ -47,11 +46,6 @@ const MyApp = ({ Component, pageProps }) => {
 	const metadata = { ...global.metadata, ...pageMetadata };
 	const favicon = getStrapiMedia(global.favicon.url);
 
-	const [mounted, setMounted] = useState(false);
-
-	useEffect(() => setMounted(true), []);
-	if(!mounted) return null; 
-
 	return (
 		<>
 			<AppHead favicon={favicon} />
@@ -81,7 +75,7 @@ const MyApp = ({ Component, pageProps }) => {
 			<Layout global={global}>
 				<Component {...pageProps} />
 			</Layout>
-			mounted && <Analytics />
+			<Analytics />
 		</>
 	);
 };
