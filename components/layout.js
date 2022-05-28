@@ -19,7 +19,7 @@ const Layout = ({ children, global }) => {
 
 	return (
 		<div>
-			<div>
+			<div className='bg-rbx-wood bg-fixed bg-repeat'>
 				<div className="flex flex-col justify-between ">
 					{/* Aligned to the top */}
 					<div className="flex-1">
@@ -27,6 +27,7 @@ const Layout = ({ children, global }) => {
 							<Navbar navbar={navbar} />
 						</div>
 						<div className="relative my-36 z-10">{children}</div>
+						{/*
 						<div className="lg:fixed lg:bg-porto bottom-0 h-full w-full z-0 lg:opacity-60">
 							<Image
 								media={{
@@ -42,6 +43,7 @@ const Layout = ({ children, global }) => {
 								priority="true"
 							/>
 						</div>
+							*/}
 					</div>
 					{/* Aligned to the bottom */}
 					<Footer footer={footer} />
