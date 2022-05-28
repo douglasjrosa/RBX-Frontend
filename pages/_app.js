@@ -14,11 +14,14 @@ import Loading from '@/components/elements/loading';
 import * as gtag from 'lib/gtag';
 import Analytics from 'components/analytics';
 
+export function reportWebVitals(metric) {
+	console.log(metric);
+}
+
 const MyApp = ({ Component, pageProps }) => {
-	
 	// Prevent Next bug when it tries to render the [[...slug]] route
 	const router = useRouter();
-	if (router.asPath === '/[[...slug]]') return <Loading />;
+	if (router.asPath === '/[[...slug]]') return null;
 
 	useEffect(() => {
 		const handleRouteChange = (url) => {
@@ -47,6 +50,7 @@ const MyApp = ({ Component, pageProps }) => {
 	const [mounted, setMounted] = useState(false);
 
 	useEffect(() => setMounted(true), []);
+	if(!mounted) return null; 
 
 	return (
 		<>
@@ -58,7 +62,7 @@ const MyApp = ({ Component, pageProps }) => {
 				description={metadata.metaDescription}
 				openGraph={{
 					images: Object.values(metadata.shareImage.formats).map(
-						image => {
+						(image) => {
 							return {
 								url: getStrapiMedia(image.url),
 								width: image.width,
@@ -75,9 +79,9 @@ const MyApp = ({ Component, pageProps }) => {
 			{/* Display the content */}
 
 			<Layout global={global}>
-				{mounted && <Component {...pageProps} />}
+				<Component {...pageProps} />
 			</Layout>
-			{mounted && <Analytics />}
+			mounted && <Analytics />
 		</>
 	);
 };
