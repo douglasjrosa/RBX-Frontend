@@ -19,22 +19,21 @@ const Layout = ({ children, global }) => {
 
 	return (
 		<div>
-			<div>					
+			<div>
 				<div className="lg:fixed lg:bg-porto bottom-0 top-0 h-full w-full z-0 lg:opacity-60">
-						<Image
-							media={{
-								id: 'none',
-								mime: 'none',
-								url: 'none',
-								name: 'porto de santos.jpg',
-								alternativeText: 'Porto de Santos'
-							}}
-							width={1500}
-							height={1000}
-							layout="responsive"
-							priority="true"
-						/>
-					</div>
+					<Image
+						media={{
+							id: 'none',
+							mime: 'none',
+							url: 'none',
+							name: 'porto de santos.jpg',
+							alternativeText: 'Porto de Santos'
+						}}
+						width={1500}
+						height={1000}
+						layout="responsive"
+						priority="true"
+					/>
 				</div>
 				<div className="fixed w-full min-h-screen bg-black opacity-50 z-0"></div>
 				<div className="flex flex-col justify-between ">
