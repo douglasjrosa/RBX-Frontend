@@ -75,8 +75,7 @@ const MyApp = ({ Component, pageProps }) => {
 			{/* Display the content */}
 
 			<Layout global={global}>
-				{!mounted && <Loading />}
-				{mounted && <Component {...pageProps} />}
+				<Component {...pageProps} />
 			</Layout>
 			{mounted && <Analytics />}
 		</>

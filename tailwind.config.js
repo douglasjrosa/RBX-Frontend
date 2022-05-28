@@ -15,6 +15,7 @@ module.exports = {
         },
       },
       backgroundImage: theme => ({
+        'rbx-wood': "url('/images/wood-min.webp')",
         'rbx-porto': "url('/images/porto de santos optimized.avif')",
         'rbx-forest': "url('https://rbx-backend-media.s3.sa-east-1.amazonaws.com/floresta_min_min_61154ca14d.webp')",
         'rbx-white': "url('https://rbx-backend-media.s3.sa-east-1.amazonaws.com/bg_bloco_min_8981be1e00.webp')",

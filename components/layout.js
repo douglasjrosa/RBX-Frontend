@@ -17,13 +17,10 @@ const Layout = ({ children, global }) => {
 
 	const [bannerIsShown, setBannerIsShown] = useState(true);
 
-	const [mounted, setMounted] = useState(false);
-	useEffect(() => setMounted(true), []);
-
 	return (
 		<div>
-			<div className="bg-rbx-porto bg-fixed bg-cover">
-				<div className='fixed w-full h-full bg-black opacity-50 z-0' ></div>
+			<div className="bg-rbx-wood bg-fixed bg-repeat">
+				<div className='fixed w-full h-full bg-white opacity-10 z-0' ></div>
 				<div className="flex flex-col justify-between ">
 
 				{/* Aligned to the top */}
@@ -34,15 +31,15 @@ const Layout = ({ children, global }) => {
 					<div className="relative my-36 z-10">{children}</div>
 				</div>
 				{/* Aligned to the bottom */}
-				{mounted && <Footer footer={footer} />}
-				{mounted && whatsappImage && whatsappContacts.length && whatsappMsg && (
+				<Footer footer={footer} />
+				{whatsappImage && whatsappContacts.length && whatsappMsg && (
 					<WhatsAppButton
 					media={whatsappImage}
 					contatos={whatsappContacts}
 					msg={whatsappMsg}
 					/>
 					)}
-				{mounted && notificationBanner && bannerIsShown && (
+				{notificationBanner && bannerIsShown && (
 					<NotificationBanner
 					data={notificationBanner}
 					closeSelf={() => setBannerIsShown(false)}
