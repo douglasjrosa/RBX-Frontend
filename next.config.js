@@ -1,4 +1,12 @@
-module.exports = {
+const withPWA = require("next-pwa");
+
+module.exports = withPWA({
+  pwa: {
+    dest: "public",
+    register: true,
+    skipWaiting: true,
+    disable: process.env.NODE_ENV === "development"
+  },
 	productionBrowserSourceMaps: true,
 	images: {
 		domains: ['rbx-backend-media.s3.sa-east-1.amazonaws.com'],
@@ -21,4 +29,4 @@ module.exports = {
 			}
 		];
 	}
-};
+});
