@@ -14,13 +14,15 @@ import * as gtag from 'lib/gtag';
 import Analytics from 'components/analytics';
 
 export function reportWebVitals(metric) {
-	console.log(metric);
+	//console.log(metric);
 }
 
 const MyApp = ({ Component, pageProps }) => {
 	// Prevent Next bug when it tries to render the [[...slug]] route
 	const router = useRouter();
-	if (router.asPath === '/[[...slug]]') return null;
+	const slug = router.asPath;
+	if (slug === '/[[...slug]]') return null;
+	
 
 	useEffect(() => {
 		const handleRouteChange = (url) => {
@@ -72,7 +74,7 @@ const MyApp = ({ Component, pageProps }) => {
 			/>
 			{/* Display the content */}
 
-			<Layout global={global}>
+			<Layout global={global} slug={slug} >
 				<Component {...pageProps} />
 			</Layout>
 			<Analytics />

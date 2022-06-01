@@ -5,7 +5,7 @@ import { useState, useEffect } from 'react';
 import WhatsAppButton from './elements/whatsapp-button';
 import Loading from '@/components/elements/loading';
 
-const Layout = ({ children, global }) => {
+const Layout = ({ children, global, slug }) => {
 	const {
 		navbar,
 		footer,
@@ -19,9 +19,19 @@ const Layout = ({ children, global }) => {
 	const [mounted, setMounted] = useState(false);
 	useEffect(() => setMounted(true), []);
 
+	const mainPages = [
+		'/',
+		'/empresa',
+		'/produtos',
+		'/informacoes',
+		'/contato'
+	];
+	let bgImage = mainPages.includes(slug) ? 'bg-rbx-porto' : 'bg-rbx-wood';
+	bgImage += ' bg-fixed bg-repeat';
+
 	return (
 		<div>
-			<div className='bg-rbx-wood bg-fixed bg-repeat'>
+			<div className={bgImage}>
 				<div className="flex flex-col justify-between ">
 					<div className="flex-1">
 						<div className="fixed w-full z-50">
@@ -30,7 +40,7 @@ const Layout = ({ children, global }) => {
 						<div className="relative my-36 z-10">
 							{!mounted && <Loading />}
 							{mounted && children}
-							</div>
+						</div>
 					</div>
 					<Footer footer={footer} />
 					{whatsappImage &&
