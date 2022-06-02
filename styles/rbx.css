@@ -36,6 +36,12 @@
     text-align: center;
 }
 
+.customNextImage > span img{
+	height: auto !important;
+	min-height: auto !important;
+	max-height: auto !important;
+}
+
 
 @media (min-width: 1024px) {
 	.lg\:bg-porto > span{

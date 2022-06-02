@@ -23,7 +23,7 @@ const FeatureRowsGroup = ({ data }) => {
 						key={feature.id}
 					>
 						{/* Media section */}
-						<div className="w-full lg:w-4/12 max-h-full">
+						<div className="customNextImage w-full lg:w-2/12">
 							{/* Images */}
 							{feature.media.mime.startsWith('image') && (
 								<Image
@@ -32,8 +32,8 @@ const FeatureRowsGroup = ({ data }) => {
 										'w-full h-auto md:rounded-md',
 										{ 'rounded-t-md': !joinNextRow }
 									)}
-									width={feature.media.width}
-									height={feature.media.height}
+									width={15}
+									height={15}
 								/>
 							)}
 							{/* Videos */}

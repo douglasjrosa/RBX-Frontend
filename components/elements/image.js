@@ -8,12 +8,17 @@ const Image = props => {
 
 	const src = require('../../public/images/' + media.name).default.src;
 
+	console.log(
+		props
+	);
+	
+
 	let newProps = {
 		src,
 		alt: props.alternativeText || alternativeText,
 		className: props.className || className,
 		width: props.width || width,
-		height: props.height || height,
+		height: props.height || height, 
 		layout: props.layout || layout || 'responsive'
 	};	
 
