@@ -19,19 +19,19 @@ const ButtonContent = ({ button, appearance, compact }) => {
         },
         // Specific to when the button is fully dark
         {
-          "bg-primary-600 text-white border-primary-600": appearance === "dark",
+          "bg-blue-400 text-white border-blue-400 hover:bg-blue-300": appearance === "dark",
         },
         // Specific to when the button is dark outlines
         {
-          "text-primary-600 border-primary-600": appearance === "dark-outline",
+          "text-blue-400 border-blue-400 hover:bg-blue-100": appearance === "dark-outline",
         },
         // Specific to when the button is fully white
         {
-          "bg-white text-primary-600 border-white": appearance === "white",
+          "bg-white text-blue-400 border-white hover:bg-gray-100": appearance === "white",
         },
         // Specific to when the button is white outlines
         {
-          "text-white border-white": appearance === "white-outline",
+          "text-white border-white hover:bg-gray-100": appearance === "white-outline",
         }
       )}
     >
