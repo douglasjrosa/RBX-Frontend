@@ -1,12 +1,14 @@
-const withPWA = require("next-pwa");
+const withPWA = require('next-pwa');
 
 module.exports = withPWA({
-  pwa: {
-    dest: "public/pwa",
-    register: true,
-    skipWaiting: true,
-    disable: process.env.NODE_ENV === "development"
-  },
+	pwa: {
+		dest: 'public',
+		register: true,
+		skipWaiting: true,
+		publicExcludes: ['!images/**/*'],
+		buildExcludes: [/chunks\/images\/.*$/],
+		//disable: process.env.NODE_ENV === "development"
+	},
 	productionBrowserSourceMaps: true,
 	images: {
 		domains: ['rbx-backend-media.s3.sa-east-1.amazonaws.com'],

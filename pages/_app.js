@@ -13,10 +13,6 @@ import '@/styles/rbx.css';
 import * as gtag from 'lib/gtag';
 import Analytics from 'components/analytics';
 
-export function reportWebVitals(metric) {
-	//console.log(metric);
-}
-
 const MyApp = ({ Component, pageProps }) => {
 	// Prevent Next bug when it tries to render the [[...slug]] route
 	const router = useRouter();
