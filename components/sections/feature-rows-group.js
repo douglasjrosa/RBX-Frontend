@@ -5,6 +5,7 @@ import CustomLink from '../elements/custom-link';
 
 const FeatureRowsGroup = ({ data }) => {
 	var joinNextRow = false;
+
 	return (
 		<div className="container flex flex-col z-20">
 			{data.features.map((feature, index) => {
@@ -23,17 +24,17 @@ const FeatureRowsGroup = ({ data }) => {
 						key={feature.id}
 					>
 						{/* Media section */}
-						<div className="customNextImage w-full lg:w-2/12">
+						<div className="customNextImage w-full lg:w-4/12" >
 							{/* Images */}
 							{feature.media.mime.startsWith('image') && (
 								<Image
 									media={feature.media}
 									className={classNames(
-										'w-full h-auto md:rounded-md',
+										'object-cover h-auto md:rounded-md',
 										{ 'rounded-t-md': !joinNextRow }
 									)}
-									width={15}
-									height={15}
+									width={feature.mediaWidth}
+									height={feature.mediaHeight}
 								/>
 							)}
 							{/* Videos */}

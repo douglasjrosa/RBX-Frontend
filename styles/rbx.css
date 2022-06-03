@@ -36,10 +36,18 @@
     text-align: center;
 }
 
+.customNextImage{
+	height: fit-content;
+}
+
+.customNextImage span{
+	padding: 0px !important;
+	height: 100% !important;
+}
+
 .customNextImage > span img{
+	position: relative !important;
 	height: auto !important;
-	min-height: auto !important;
-	max-height: auto !important;
 }
 
 

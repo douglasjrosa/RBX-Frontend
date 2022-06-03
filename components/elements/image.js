@@ -8,11 +8,6 @@ const Image = props => {
 
 	const src = require('../../public/images/' + media.name).default.src;
 
-	console.log(
-		props
-	);
-	
-
 	let newProps = {
 		src,
 		alt: props.alternativeText || alternativeText,
