@@ -13,12 +13,22 @@ import '@/styles/rbx.css';
 import * as gtag from 'lib/gtag';
 import Analytics from 'components/analytics';
 
+import preloadPrepare from '@/utils/preloadPrepare.js'
+
 const MyApp = ({ Component, pageProps }) => {
 	// Prevent Next bug when it tries to render the [[...slug]] route
 	const router = useRouter();
 	const slug = router.asPath;
 	if (slug === '/[[...slug]]') return null;
 	
+	const mainPages = [
+		'/',
+		'/empresa',
+		'/produtos',
+		'/informacoes',
+		'/contato'
+	];
+	let bgImage = mainPages.includes(slug) ? 'bg-rbx-porto' : 'bg-rbx-wood';
 
 	useEffect(() => {
 		const handleRouteChange = (url) => {
@@ -32,7 +42,7 @@ const MyApp = ({ Component, pageProps }) => {
 	}, []);
 
 	// Extract the data we need
-	const { global } = pageProps;
+	const { global, sections } = pageProps;
 	const pageMetadata = pageProps.metadata;
 
 	if (global == null) {
@@ -44,9 +54,11 @@ const MyApp = ({ Component, pageProps }) => {
 	const metadata = { ...global.metadata, ...pageMetadata };
 	const favicon = getStrapiMedia(global.favicon.url);
 
+	const preloads = preloadPrepare({global, sections, bgImage});
+
 	return (
 		<>
-			<AppHead favicon={favicon} />
+			<AppHead favicon={favicon} preloads={preloads} />
 			{/* Global site metadata */}
 			<DefaultSeo
 				titleTemplate={`%s | ${global.metaTitleSuffix}`}
@@ -70,7 +82,7 @@ const MyApp = ({ Component, pageProps }) => {
 			/>
 			{/* Display the content */}
 
-			<Layout global={global} slug={slug} >
+			<Layout global={global} bgImage={bgImage} >
 				<Component {...pageProps} />
 			</Layout>
 			<Analytics />

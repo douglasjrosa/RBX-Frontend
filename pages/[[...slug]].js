@@ -3,17 +3,13 @@ import { getStrapiURL, getPageData } from 'utils/api';
 import Sections from '@/components/sections';
 import Seo from '@/components/elements/seo';
 import { useRouter } from 'next/dist/client/router';
-import { useAmp } from 'next/amp';
 
 // The file is called [[...slug]].js because we're using Next's
 // optional catch all routes feature. See the related docs:
 // https://nextjs.org/docs/routing/dynamic-routes#optional-catch-all-routes
 
-export const config = { amp: "hibrid" }
-
 const DynamicPage = ({ sections, metadata, preview }) => {
 	const router = useRouter();
-	const isAmp = useAmp();
 
 	// Check if the required data was provided
 	if (!router.isFallback && !sections?.length) {
@@ -29,7 +25,7 @@ const DynamicPage = ({ sections, metadata, preview }) => {
 			{/* Add meta tags for SEO*/}
 			<Seo metadata={metadata} />
 			{/* Display content sections */}
-			<Sections sections={sections} isAmp={isAmp} preview={preview} />
+			<Sections sections={sections} preview={preview} />
 		</>
 	);
 };

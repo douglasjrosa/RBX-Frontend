@@ -7,7 +7,6 @@ module.exports = withPWA({
 		skipWaiting: true,
 		publicExcludes: ['!images/*'],
 		buildExcludes: [/chunks\/images\/.*$/, /images\/.*$/, /media\/.*$/]
-		//disable: process.env.NODE_ENV === "development"
 	},
 	productionBrowserSourceMaps: true,
 	images: {

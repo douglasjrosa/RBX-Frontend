@@ -4,7 +4,7 @@ import { mediaPropTypes } from 'utils/types';
 
 const Image = props => {
 	const { media } = props;
-	const { alternativeText, className, width, height, layout } = media;
+	const { alternativeText, className, width, height, layout, priority = false } = media;
 
 	const src = require('../../public/images/' + media.name).default.src;
 
@@ -14,7 +14,8 @@ const Image = props => {
 		className: props.className || className,
 		width: props.width || width,
 		height: props.height || height, 
-		layout: props.layout || layout || 'responsive'
+		layout: props.layout || layout || 'responsive',
+		priority
 	};	
 
 	for (let prop in newProps) {
