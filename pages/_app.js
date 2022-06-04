@@ -13,7 +13,7 @@ import '@/styles/rbx.css';
 import * as gtag from 'lib/gtag';
 import Analytics from 'components/analytics';
 
-import preloadPrepare from '@/utils/preloadPrepare.js'
+import {preloadPrepare} from '@/utils/lcp-handle.js'
 
 const MyApp = ({ Component, pageProps }) => {
 	// Prevent Next bug when it tries to render the [[...slug]] route

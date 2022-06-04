@@ -32,11 +32,7 @@ const propsPrepare = (img, publicPath = false) => {
 			return srcsetSize;
 		}
 	});
-
-	const href = `${baseLink}&w=828&q=${quality}`;
-	const srcset = srcsetSizes.reverse().join(', ');
-
-	return { href, srcset };
+	return srcsetSizes.reverse().join(', ');
 };
 
 const getName = (data) => {
@@ -52,32 +48,29 @@ const getName = (data) => {
 		logo: () => data.global.navbar.logo.name,
 		img1: () => data.sections[0].features[0].media.name,
 		img2: () => data.sections[0].features[1].media.name
-
 	};
 };
 
-const preloadPrepare = (data) => {
+export const preloadPrepare = (data) => {
 
-	const names = ['zap', 'bg', 'logo', 'img1', 'img2'].map((item) =>
-		getName(data)[item]()
-	);
+	// In case NextImage Priority prop stops working, consider to add those items
+	// to the above array in order to preload them.
+	//['zap', 'logo', 'img1', 'img2']
+	const names = ['bg'].map((item) => getName(data)[item]() );
 
 	return names.map((name, key) => {
 		const img = require('../public/images/' + name).default;
 
-		const { href, srcset } = propsPrepare(img);
+		const srcset = propsPrepare(img);
 
 		return (
 			<link
 				key={`prelink-${key}`}
 				rel="preload"
 				as="image"
-				href={href}
-				srcset={srcset}
+				imagesrcset={srcset}
 				imagesizes="100vw"
 			/>
 		);
 	});
 };
-
-export default preloadPrepare;

@@ -39,7 +39,7 @@ const WhatsAppButton = props => {
 					aria-label="Botão Whatsapp"
 					onClick={() => setButtonIsClicked(!buttonIsClicked)}
 				>
-					<Image media={media} width="80" height="80" priority alternativeText="Ícone do Whatsapp" />
+					<Image media={media} width="80" height="80" alternativeText="Ícone do Whatsapp" />
 				</button>
 			</div>
 			{buttonIsClicked && (

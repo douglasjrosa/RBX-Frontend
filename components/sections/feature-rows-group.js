@@ -35,7 +35,7 @@ const FeatureRowsGroup = ({ data }) => {
 									)}
 									width={feature.mediaWidth}
 									height={feature.mediaHeight}
-									priority={true}
+									priority={index < 1}
 								/>
 							)}
 							{/* Videos */}

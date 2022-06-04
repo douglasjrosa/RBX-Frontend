@@ -1,10 +1,11 @@
 import NextImage from 'next/image';
 import PropTypes from 'prop-types';
 import { mediaPropTypes } from 'utils/types';
+import {imgAboveTheFoldPrepare} from '@/utils/lcp-handle.js'
 
 const Image = props => {
-	const { media } = props;
-	const { alternativeText, className, width, height, layout, priority = false } = media;
+	const { media, priority } = props;
+	const { alternativeText, className, width, height, layout } = media;
 
 	const src = require('../../public/images/' + media.name).default.src;
 
