@@ -40,7 +40,7 @@ const MyApp = ({ Component, pageProps }) => {
 	}, []);
 
 	// Extract the data we need
-	const { global, sections } = pageProps;
+	const { global } = pageProps;
 	const pageMetadata = pageProps.metadata;
 
 	if (global == null) {
