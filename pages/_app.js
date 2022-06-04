@@ -13,8 +13,6 @@ import '@/styles/rbx.css';
 import * as gtag from 'lib/gtag';
 import Analytics from 'components/analytics';
 
-import {preloadPrepare} from '@/utils/lcp-handle.js'
-
 const MyApp = ({ Component, pageProps }) => {
 	// Prevent Next bug when it tries to render the [[...slug]] route
 	const router = useRouter();
@@ -28,7 +26,7 @@ const MyApp = ({ Component, pageProps }) => {
 		'/informacoes',
 		'/contato'
 	];
-	let bgImage = mainPages.includes(slug) ? 'bg-rbx-porto' : 'bg-rbx-wood';
+	let bgImage = mainPages.includes(slug) ? 'bg-rbx-porto bg-fixed bg-cover' : '';
 
 	useEffect(() => {
 		const handleRouteChange = (url) => {
@@ -54,11 +52,9 @@ const MyApp = ({ Component, pageProps }) => {
 	const metadata = { ...global.metadata, ...pageMetadata };
 	const favicon = getStrapiMedia(global.favicon.url);
 
-	const preloads = preloadPrepare({global, sections, bgImage});
-
 	return (
 		<>
-			<AppHead favicon={favicon} preloads={preloads} />
+			<AppHead favicon={favicon} />
 			{/* Global site metadata */}
 			<DefaultSeo
 				titleTemplate={`%s | ${global.metaTitleSuffix}`}

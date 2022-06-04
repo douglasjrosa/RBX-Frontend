@@ -19,18 +19,18 @@ const Navbar = ({ navbar }) => {
 	return (
 		<>
 			{/* The actual navbar */}
-			<nav className="shadow-lg py-6 sm:py-3 bg-white">
+			<nav style={{ boxShadow: 'rgba(0,0,0,0.25) 0px 10px 15px'}} className="py-6 sm:py-3 bg-white">
 				<div className="container flex flex-row items-center justify-between">
 					{/* Content aligned to the left */}
 					<div className="flex flex-row items-center">
 						<Link href="/[[...slug]]" as="/">
-							<a aria-label="Página inicial" className='w-40'>
+							<a aria-label="Página inicial" className='w-[150px]'>
 								<Image
 									media={navbar.logo}
 									className="h-10 w-auto object-contain"
 									alt="Logomarca Ribermax"
-									width="146"
-									height="38"
+									width="150"
+									height="39"
 								/>
 							</a>
 						</Link>

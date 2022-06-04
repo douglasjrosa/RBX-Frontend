@@ -1,7 +1,7 @@
 import Head from 'next/head';
 
 const AppHead = (props) => {
-	const { favicon, preloads } = props;
+	const { favicon } = props;
 
 	/* Favicon */
 	return (
@@ -10,7 +10,6 @@ const AppHead = (props) => {
 			<link rel="manifest" href="/manifest.json" />
 			<link rel="apple-touch-icon" href="/icon.png"></link>
 			<meta name="theme-color" content="#8b572a" />
-			{preloads.map(link => link )}
 		</Head>
 	);
 };

@@ -31,7 +31,7 @@ const WhatsAppButton = props => {
 		<div className='z-30'>
 			<div className="fixed bottom-24 right-5">
 				<button
-					className='w-24'
+					className='w-[90px]'
 					type="button"
 					key="menu-button"
 					aria-expanded="true"
@@ -39,7 +39,7 @@ const WhatsAppButton = props => {
 					aria-label="Botão Whatsapp"
 					onClick={() => setButtonIsClicked(!buttonIsClicked)}
 				>
-					<Image media={media} width="80" height="80" alternativeText="Ícone do Whatsapp" />
+					<Image media={media} width="90" height="90" alternativeText="Ícone do Whatsapp" />
 				</button>
 			</div>
 			{buttonIsClicked && (

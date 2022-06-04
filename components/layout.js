@@ -19,10 +19,9 @@ const Layout = ({ children, global, bgImage }) => {
 	const [mounted, setMounted] = useState(false);
 	useEffect(() => setMounted(true), []);
 
-	const bgClass = `${bgImage} bg-fixed bg-repeat`;
 	return (
 		<div>
-			<div className={bgClass}>
+			<div className={bgImage}>
 				<div className="flex flex-col justify-between ">
 					<div className="flex-1">
 						<div className="fixed w-full z-50">

@@ -1,7 +1,6 @@
 import NextImage from 'next/image';
 import PropTypes from 'prop-types';
 import { mediaPropTypes } from 'utils/types';
-import {imgAboveTheFoldPrepare} from '@/utils/lcp-handle.js'
 
 const Image = props => {
 	const { media, priority } = props;
