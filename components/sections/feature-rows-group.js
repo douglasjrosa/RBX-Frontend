@@ -3,7 +3,7 @@ import Image from '../elements/image';
 import Video from '../elements/video';
 import CustomLink from '../elements/custom-link';
 
-const FeatureRowsGroup = ({ data }) => {
+const FeatureRowsGroup = ({ data, isAmp }) => {
 	var joinNextRow = false;
 
 	return (
@@ -26,8 +26,19 @@ const FeatureRowsGroup = ({ data }) => {
 						{/* Media section */}
 						<div className="customNextImage w-full lg:w-4/12" >
 							{/* Images */}
-							{feature.media.mime.startsWith('image') && (
-								<Image
+							{feature.media.mime.startsWith('image') &&
+							isAmp ?
+							(<amp-img
+								src={feature.media.url}
+								class={classNames(
+									'object-cover h-auto md:rounded-md',
+									{ 'rounded-t-md': !joinNextRow }
+								)}
+								width={feature.mediaWidth}
+								height={feature.mediaHeight}
+							/>)
+							:
+							(<Image
 									media={feature.media}
 									className={classNames(
 										'object-cover h-auto md:rounded-md',
