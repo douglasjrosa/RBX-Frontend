@@ -51,7 +51,7 @@ const MyApp = ({ Component, pageProps }) => {
 		if (!pageMetadata[prop]) delete pageMetadata[prop];
 	const metadata = { ...global.metadata, ...pageMetadata };
 	const favicon = getStrapiMedia(global.favicon.url);
-
+	
 	return (
 		<>
 			<AppHead favicon={favicon} />
@@ -81,7 +81,7 @@ const MyApp = ({ Component, pageProps }) => {
 			<Layout global={global} bgImage={bgImage} >
 				<Component {...pageProps} />
 			</Layout>
-			<Analytics />
+			{process.env.NODE_ENV === 'production' && <Analytics />}
 		</>
 	);
 };
