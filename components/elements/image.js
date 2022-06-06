@@ -4,10 +4,10 @@ import { mediaPropTypes } from 'utils/types';
 
 const Image = props => {
 	const { media, priority } = props;
-	const { alternativeText, className, width, height, layout } = media;
-
-	const src = require('../../public/images/' + media.name).default.src;
-
+	const { alternativeText, className, width, height, layout, name } = media;
+	
+	const src = require('../../public/images/' + name).default.src;
+	
 	let newProps = {
 		src,
 		alt: props.alternativeText || alternativeText,

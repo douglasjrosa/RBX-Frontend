@@ -1,8 +1,9 @@
 import PropTypes from 'prop-types';
 import Markdown from 'react-markdown';
-import Image from '../elements/image';
+import Image from '@/components/elements/image';
 
 const RichText = ({ data }) => {
+	
 	return (
 		<div
 			className="container prose-lg max-w-4xl z-20 bg-white rounded-lg shadow-lg p-12 richText-rbx block"
@@ -13,16 +14,11 @@ const RichText = ({ data }) => {
 						const { src, alt } = props;
 						return (
 							<span className="text-center block">
-								<Image
-									media={{
-										url: src,
-										name: alt,
-										alternativeText: alt,
-										mime: "none",
-										id: "none"
-									}}
-									width="400"
-									height="300"
+								<img
+									src={src}
+									alt={alt}
+									width={400}
+									height={300}
 								/>
 							</span>
 						);
