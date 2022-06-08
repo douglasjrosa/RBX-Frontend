@@ -1,8 +1,9 @@
 import classNames from 'classnames';
-import Image from '../elements/image';
-import Video from '../elements/video';
-import CustomLink from '../elements/custom-link';
 import Markdown from 'react-markdown';
+import Image from '@/components/elements/image';
+import Video from '@/components/elements/video';
+import CustomLink from '@/components/elements/custom-link';
+import TextHeader from '@/components/elements/text-header'
 
 const FeatureRowsGroup = ({ data }) => {
 	var joinNextRow = false;
@@ -51,7 +52,7 @@ const FeatureRowsGroup = ({ data }) => {
 						</div>
 						{/* Text section */}
 						<div className="w-full lg:w-6/12 text-lg p-5">
-							<h3 className="text-4xl">{feature.title}</h3>
+							<TextHeader heading={index} className="text-4xl">{feature.title}</TextHeader>
 							<Markdown className="my-6">{feature.description}</Markdown>
 							{feature.link && (
 								<CustomLink link={feature.link}>
