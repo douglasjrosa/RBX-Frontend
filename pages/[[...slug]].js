@@ -71,7 +71,8 @@ export async function getStaticProps({ params, preview = null }) {
 			preview,
 			sections: contentSections,
 			metadata
-		}
+		},
+		revalidate: 1
 	};
 }
 
