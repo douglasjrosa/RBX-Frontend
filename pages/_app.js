@@ -26,7 +26,7 @@ const MyApp = ({ Component, pageProps }) => {
 		'/informacoes',
 		'/contato'
 	];
-	let bgImage = mainPages.includes(slug) ? 'bg-rbx-porto bg-fixed bg-cover' : '';
+	let bgImage = mainPages.includes(slug) ? 'bg-rbx-porto bg-fixed bg-cover' : 'bg-rbx-green bg-[length:50px_50px]';
 
 	useEffect(() => {
 		const handleRouteChange = (url) => {
