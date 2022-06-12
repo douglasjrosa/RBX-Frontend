@@ -2,30 +2,19 @@ import ErrorPage from 'next/error';
 import { getStrapiURL, getPageData } from 'utils/api';
 import Sections from '@/components/sections';
 import Seo from '@/components/elements/seo';
-import { useRouter } from 'next/dist/client/router';
 
-// The file is called [[...slug]].js because we're using Next's
-// optional catch all routes feature. See the related docs:
-// https://nextjs.org/docs/routing/dynamic-routes#optional-catch-all-routes
-
-const DynamicPage = ({ sections, metadata, preview }) => {
-	const router = useRouter();
+const DynamicPage = ({ sections, metadata }) => {
 
 	// Check if the required data was provided
-	if (!router.isFallback && !sections?.length) {
+	if (!sections?.length) {
 		return <ErrorPage statusCode={404} />;
-	}
-
-	// Loading screen (only possible in preview mode)
-	if (router.isFallback) {
-		return <div className="container">Loading...</div>;
 	}
 	return (
 		<>
 			{/* Add meta tags for SEO*/}
 			<Seo metadata={metadata} />
 			{/* Display content sections */}
-			<Sections sections={sections} preview={preview} />
+			<Sections sections={sections} />
 		</>
 	);
 };
@@ -44,7 +33,7 @@ export async function getStaticPaths() {
 	return { paths, fallback: true };
 }
 
-export async function getStaticProps({ params, preview = null }) {
+export async function getStaticProps({ params }) {
 	// Find the page data for the current slug
 	let chainedSlugs;
 	if (params == {} || !params.slug) {
@@ -56,8 +45,8 @@ export async function getStaticProps({ params, preview = null }) {
 		chainedSlugs = params.slug.join('__');
 	}
 
-	// Fetch pages. Include drafts if preview mode is on
-	const pageData = await getPageData(chainedSlugs, preview);
+	// Fetch pages.
+	const pageData = await getPageData(chainedSlugs);
 
 	if (pageData == null) {
 		// Giving the page no props will trigger a 404 page
@@ -68,11 +57,9 @@ export async function getStaticProps({ params, preview = null }) {
 	const { contentSections, metadata } = pageData;
 	return {
 		props: {
-			preview,
 			sections: contentSections,
 			metadata
-		},
-		revalidate: 1
+		}
 	};
 }
 

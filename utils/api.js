@@ -27,10 +27,10 @@ export async function fetchAPI(path, options = {}) {
   return data
 }
 
-export async function getPageData(slug, preview = false) {
+export async function getPageData(slug) {
   // Find the pages that match this slug
   const pagesData = await fetchAPI(
-    `/pages?slug=${slug}&status=published${preview ? '&status=draft' : ''}`
+    `/pages?slug=${slug}&status=published`
   )
 
   // Make sure we found something, otherwise return null

@@ -8,9 +8,8 @@ import { getStrapiMedia } from 'utils/media';
 import { getGlobalData } from 'utils/api';
 import Layout from '@/components/layout';
 import '@/styles/index.css';
-import '@/styles/rbx.css';
 
-import * as gtag from 'lib/gtag';
+import { pageview } from 'lib/gtag';
 import Analytics from 'components/analytics';
 
 const MyApp = ({ Component, pageProps }) => {
@@ -18,7 +17,7 @@ const MyApp = ({ Component, pageProps }) => {
 	const router = useRouter();
 	const slug = router.asPath;
 	if (slug === '/[[...slug]]') return null;
-	
+
 	const mainPages = [
 		'/',
 		'/empresa',
@@ -26,11 +25,13 @@ const MyApp = ({ Component, pageProps }) => {
 		'/informacoes',
 		'/contato'
 	];
-	let bgImage = mainPages.includes(slug) ? 'bg-rbx-porto bg-fixed bg-cover' : 'bg-rbx-green bg-[length:50px_50px]';
+	let bgImage = mainPages.includes(slug)
+		? 'bg-rbx-porto bg-fixed bg-cover'
+		: 'bg-rbx-green bg-[length:50px_50px]';
 
 	useEffect(() => {
 		const handleRouteChange = (url) => {
-			gtag.pageview(url);
+			pageview(url);
 		};
 
 		router.events.on('routeChangeComplete', handleRouteChange);
@@ -51,7 +52,7 @@ const MyApp = ({ Component, pageProps }) => {
 		if (!pageMetadata[prop]) delete pageMetadata[prop];
 	const metadata = { ...global.metadata, ...pageMetadata };
 	const favicon = getStrapiMedia(global.favicon.url);
-	
+
 	return (
 		<>
 			<AppHead favicon={favicon} />
@@ -62,7 +63,7 @@ const MyApp = ({ Component, pageProps }) => {
 				description={metadata.metaDescription}
 				openGraph={{
 					images: Object.values(metadata.shareImage.formats).map(
-						image => {
+						(image) => {
 							return {
 								url: getStrapiMedia(image.url),
 								width: image.width,
@@ -78,7 +79,7 @@ const MyApp = ({ Component, pageProps }) => {
 			/>
 			{/* Display the content */}
 
-			<Layout global={global} bgImage={bgImage} >
+			<Layout global={global} bgImage={bgImage}>
 				<Component {...pageProps} />
 			</Layout>
 			{process.env.NODE_ENV === 'production' && <Analytics />}

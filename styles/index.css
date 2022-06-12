@@ -19,17 +19,6 @@ html {
   }
 }
 
-.rich-text-hero a {
-  @apply text-blue-600 underline;
-}
-
-.rich-text-banner {
-  @apply whitespace-pre-line;
-  a {
-    @apply underline;
-  }
-}
-
 .title {
   @apply text-4xl leading-snug font-semibold;
 }
@@ -47,4 +36,33 @@ html {
   height: 13px;
   display: inline-block;
   margin-left: 0.5em;
+}
+
+.card-rbx{
+    border-radius: 0.5em;
+    background-color: white;
+    padding: 2em;
+    box-shadow: 0.5em 0.5em 1em rgba(0,0,0,0.7);
+    text-align: center;
+}
+
+.customNextImage{
+	height: fit-content;
+}
+
+.customNextImage span{
+	padding: 0px !important;
+	height: 100% !important;
+}
+
+.customNextImage > span img{
+	position: relative !important;
+	height: auto !important;
+}
+
+
+@media (min-width: 1024px) {
+	.lg\:bg-porto > span{
+		min-height: 100vh;
+	}
 }
