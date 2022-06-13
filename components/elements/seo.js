@@ -10,18 +10,7 @@ const Seo = ({ metadata }) => {
       openGraph={{
         // Title and description are mandatory
         title: metadata.metaTitle,
-        description: metadata.metaDescription,
-        // Only include OG image if we have it
-        // Careful: if you disable image optimization in Strapi, this will break
-        ...(metadata.shareImage && {
-          images: Object.values(metadata.shareImage.formats).map((image) => {
-            return {
-              url: image.url,
-              width: image.width,
-              height: image.height,
-            };
-          }),
-        }),
+        description: metadata.metaDescription
       }}
       // Only included Twitter data if we have it
       twitter={{
