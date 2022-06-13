@@ -1,12 +1,20 @@
-//import ErrorPage from 'next/error';
+import ErrorPage from 'next/error';
 import { getStrapiURL, getPageData } from 'utils/api';
-//import Sections from '@/components/sections';
-//import Seo from '@/components/elements/seo';
+import Sections from '@/components/sections';
+import Seo from '@/components/elements/seo';
 
 const DynamicPage = ({ sections, metadata }) => {
 
+	// Check if the required data was provided
+	if (!sections?.length) {
+		return <ErrorPage statusCode={404} />;
+	}
 	return (
-		<>Hi World!
+		<>
+			{/* Add meta tags for SEO*/}
+			<Seo metadata={metadata} />
+			{/* Display content sections */}
+			<Sections sections={sections} />
 		</>
 	);
 };
@@ -37,9 +45,6 @@ export async function getStaticPaths() {
 		  }
 	];//await (await fetch(getStrapiURL('/pages'))).json();
 	
-	console.log(pages);
-	
-
 	const paths = pages.map((page) => {
 		// Decompose the slug that was saved in Strapi
 		const slugArray = page.slug.split('__');
