@@ -1,5 +1,4 @@
 import Sections from '@/components/sections';
-import Seo from '@/components/elements/seo';
 
 const DynamicPage = () => {
 
@@ -83,21 +82,8 @@ const DynamicPage = () => {
 		}
 	];
 
-	const metadata = {
-		twitterCardType: 'summary_large_image',
-		metaTitle: 'Caixa de madeira fumigada para exportação',
-		metaDescription:
-			'A RIBERMAX é a Fabricante de Embalagem de Madeira que pode te ajudar se você precisa de CAIXA FUMIGADA P/ EXPORTAÇÃO. Desde 1996, o único foco da Ribermax tem sido produzir e inovar no segmento de Paletes, Engradados, Estrados, Caixas e Embalagens de Madeira para Transporte de Equipamentos, Peças e Produtos em Geral.\n',
-		twitterUsername: '@RibermaxEmbalagens',
-		shareImage: {
-			formats: []
-		}
-	};
-
 	return (
 		<>
-			{/* Add meta tags for SEO*/}
-			<Seo metadata={metadata} />
 			{/* Display content sections */}
 			<Sections sections={sections} />
 		</>
