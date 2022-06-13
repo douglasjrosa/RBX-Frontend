@@ -1,5 +1,4 @@
 import classNames from 'classnames';
-import Markdown from 'react-markdown';
 import Image from '@/components/elements/image';
 import CustomLink from '@/components/elements/custom-link';
 import TextHeader from '@/components/elements/text-header';
@@ -58,7 +57,7 @@ const DynamicPage = () => {
 					<TextHeader heading={index} className="text-4xl">
 						{feature.title}
 					</TextHeader>
-					<Markdown className="my-6">{feature.description}</Markdown>
+					<div className="my-6">{feature.description}</div>
 					{feature.link && (
 						<CustomLink link={feature.link}>
 							<div className="text-blue-600 with-arrow hover:underline">
