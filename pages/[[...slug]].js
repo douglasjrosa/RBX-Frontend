@@ -1,14 +1,10 @@
-import ErrorPage from 'next/error';
+//import ErrorPage from 'next/error';
 import { getStrapiURL, getPageData } from 'utils/api';
 //import Sections from '@/components/sections';
 //import Seo from '@/components/elements/seo';
 
 const DynamicPage = ({ sections, metadata }) => {
 
-	// Check if the required data was provided
-	if (!sections?.length) {
-		return <ErrorPage statusCode={404} />;
-	}
 	return (
 		<>Hi World!
 		</>
