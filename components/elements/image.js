@@ -1,6 +1,4 @@
 import NextImage from 'next/image';
-import PropTypes from 'prop-types';
-import { mediaPropTypes } from 'utils/types';
 
 const Image = props => {
 	const { media, priority } = props;
@@ -22,11 +20,6 @@ const Image = props => {
 		if (newProps[prop] === '') delete newProps[prop];
 	}
 	return <NextImage {...newProps} />;
-};
-
-Image.propTypes = {
-	media: mediaPropTypes.isRequired,
-	className: PropTypes.string
 };
 
 export default Image;

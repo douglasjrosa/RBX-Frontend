@@ -1,6 +1,4 @@
 import Link from "next/link";
-import PropTypes from "prop-types";
-import { linkPropTypes } from "utils/types";
 
 const CustomLink = ({ link, children }) => {
   const isInternalLink = link.url.startsWith('/')
@@ -28,13 +26,5 @@ const CustomLink = ({ link, children }) => {
     </a>
   );  
 }
-
-CustomLink.propTypes = {
-  link: linkPropTypes,
-  children: PropTypes.oneOfType([
-    PropTypes.arrayOf(PropTypes.node),
-    PropTypes.node,
-  ]).isRequired,
-};
 
 export default CustomLink;

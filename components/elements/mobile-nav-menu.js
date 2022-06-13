@@ -1,11 +1,5 @@
-import PropTypes from "prop-types";
 import { MdClose, MdChevronRight } from "react-icons/md";
 import Image from "./image";
-import {
-  mediaPropTypes,
-  linkPropTypes,
-  buttonLinkPropTypes,
-} from "utils/types";
 import ButtonLink from "./button-link";
 import { useLockBodyScroll } from "utils/hooks";
 import { getButtonAppearance } from "utils/button";
@@ -57,15 +51,6 @@ const MobileNavMenu = ({ navbar, closeSelf }) => {
       </div>
     </div>
   );
-};
-
-MobileNavMenu.propTypes = {
-  navbar: PropTypes.shape({
-    logo: mediaPropTypes,
-    links: PropTypes.arrayOf(linkPropTypes),
-    button: buttonLinkPropTypes,
-  }),
-  closeSelf: PropTypes.func,
 };
 
 export default MobileNavMenu;

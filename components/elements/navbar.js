@@ -1,15 +1,9 @@
 import { useState } from 'react';
 import Link from 'next/link';
-import PropTypes from 'prop-types';
 import { MdMenu } from 'react-icons/md';
 import MobileNavMenu from './mobile-nav-menu';
 import ButtonLink from './button-link';
 import Image from './image';
-import {
-	mediaPropTypes,
-	linkPropTypes,
-	buttonLinkPropTypes
-} from 'utils/types';
 import { getButtonAppearance } from 'utils/button';
 import CustomLink from './custom-link';
 
@@ -82,14 +76,6 @@ const Navbar = ({ navbar }) => {
 			)}
 		</>
 	);
-};
-
-Navbar.propTypes = {
-	navbar: PropTypes.shape({
-		logo: mediaPropTypes,
-		links: PropTypes.arrayOf(linkPropTypes),
-		button: buttonLinkPropTypes
-	})
 };
 
 export default Navbar;

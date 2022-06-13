@@ -1,6 +1,4 @@
 import Image from './image';
-import PropTypes from 'prop-types';
-import { linkPropTypes, mediaPropTypes } from 'utils/types';
 import CustomLink from './custom-link';
 
 const Footer = ({ footer }) => {
@@ -44,21 +42,6 @@ const Footer = ({ footer }) => {
 			</div>
 		</footer>
 	);
-};
-
-Footer.propTypes = {
-	footer: PropTypes.shape({
-		logo: mediaPropTypes.isRequired,
-		columns: PropTypes.arrayOf(
-			PropTypes.shape({
-				id: PropTypes.oneOfType([PropTypes.string, PropTypes.number])
-					.isRequired,
-				title: PropTypes.string.isRequired,
-				links: PropTypes.arrayOf(linkPropTypes)
-			})
-		),
-		smallText: PropTypes.string.isRequired
-	})
 };
 
 export default Footer;

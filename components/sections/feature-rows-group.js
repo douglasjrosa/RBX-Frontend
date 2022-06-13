@@ -1,7 +1,6 @@
 import classNames from 'classnames';
 import Markdown from 'react-markdown';
 import Image from '@/components/elements/image';
-import Video from '@/components/elements/video';
 import CustomLink from '@/components/elements/custom-link';
 import TextHeader from '@/components/elements/text-header'
 
@@ -38,15 +37,6 @@ const FeatureRowsGroup = ({ data }) => {
 									width={feature.mediaWidth}
 									height={feature.mediaHeight}
 									priority={index < 1}
-								/>
-							)}
-							{/* Videos */}
-							{feature.media.mime.startsWith('video') && (
-								<Video
-									media={feature.media}
-									className="w-full h-auto"
-									autoPlay
-									controls={false}
 								/>
 							)}
 						</div>

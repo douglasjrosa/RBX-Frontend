@@ -4,9 +4,8 @@
   "scripts": {
     "dev": "next",
     "develop": "next",
-    "build": "next build",
-    "start": "next start",
-    "analyze": "ANALYZE=true yarn build"
+    "build": "rm -rf dist && next build",
+    "start": "next start"
   },
   "dependencies": {
     "@tailwindcss/postcss7-compat": "^2.2.17",
