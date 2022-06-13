@@ -13,8 +13,33 @@ const DynamicPage = ({ sections, metadata }) => {
 
 export async function getStaticPaths() {
 	// Get all pages from Strapi
-	const pages = await (await fetch(getStrapiURL('/pages'))).json();
+	const pages = [
+		{
+			status: 'published',
+			_id: '6101a60c1d24981a346d2d8c',
+			slug: 'caixa-madeira-fumigada-exportacao',
+			shortName: 'Caixa de madeira fumigada para exportação',
+			metadata: {
+			  twitterCardType: 'summary_large_image',
+			  _id: '6101a60c1d24981a346d2d8d',
+			  metaTitle: 'Caixa de madeira fumigada para exportação',
+			  metaDescription: 'A RIBERMAX é a Fabricante de Embalagem de Madeira que pode te ajudar se você precisa de CAIXA FUMIGADA P/ EXPORTAÇÃO. Desde 1996, o único foco da Ribermax tem sido produzir e inovar no segmento de Paletes, Engradados, Estrados, Caixas e Embalagens de Madeira para Transporte de Equipamentos, Peças e Produtos em Geral.\n',
+			  twitterUsername: '@RibermaxEmbalagens',
+			  __v: 0,
+			  shareImage: [Object],
+			  id: '6101a60c1d24981a346d2d8d'
+			},
+			contentSections: [ [Object] ],
+			createdAt: '2021-07-28T18:46:36.904Z',
+			updatedAt: '2022-06-02T13:25:27.660Z',
+			__v: 2,
+			id: '6101a60c1d24981a346d2d8c'
+		  }
+	];//await (await fetch(getStrapiURL('/pages'))).json();
 	
+	console.log(pages);
+	
+
 	const paths = pages.map((page) => {
 		// Decompose the slug that was saved in Strapi
 		const slugArray = page.slug.split('__');
