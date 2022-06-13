@@ -1,7 +1,7 @@
 import ErrorPage from 'next/error';
 import { getStrapiURL, getPageData } from 'utils/api';
-import Sections from '@/components/sections';
-import Seo from '@/components/elements/seo';
+//import Sections from '@/components/sections';
+//import Seo from '@/components/elements/seo';
 
 const DynamicPage = ({ sections, metadata }) => {
 
@@ -10,11 +10,7 @@ const DynamicPage = ({ sections, metadata }) => {
 		return <ErrorPage statusCode={404} />;
 	}
 	return (
-		<>
-			{/* Add meta tags for SEO*/}
-			<Seo metadata={metadata} />
-			{/* Display content sections */}
-			<Sections sections={sections} />
+		<>Hi World!
 		</>
 	);
 };
