@@ -1,6 +1,6 @@
-import classNames from 'classnames';
+
 import Image from '@/components/elements/image';
-import CustomLink from '@/components/elements/custom-link';
+import Link from "next/link";
 import TextHeader from '@/components/elements/text-header';
 
 const DynamicPage = () => {
@@ -24,16 +24,7 @@ const DynamicPage = () => {
 	return (
 		<div className="container flex flex-col z-20">
 			<div
-				className={classNames(
-					// Common classes
-					'flex flex-col justify-center md:p-8 sm:items-center bg-white md:gap-10 shadow-lg',
-					{ 'rounded-t-lg': !joinNextRow },
-					{ 'rounded-b-lg mb-16': !feature.joinNextRow },
-					{
-						'md:flex-row': index % 2 === 0,
-						'md:flex-row-reverse': index % 2 === 1
-					}
-				)}
+				className='flex flex-col justify-center md:p-8 sm:items-center bg-white md:gap-10 shadow-lg'
 				key={feature.id}
 			>
 				{/* Media section */}
@@ -42,10 +33,7 @@ const DynamicPage = () => {
 					{index > 1 && feature.media.mime.startsWith('image') && (
 						<Image
 							media={feature.media}
-							className={classNames(
-								'object-cover h-auto md:rounded-md',
-								{ 'rounded-t-md': !joinNextRow }
-							)}
+							className='object-cover h-auto md:rounded-md'
 							width={feature.mediaWidth}
 							height={feature.mediaHeight}
 							priority={index < 1}
@@ -59,11 +47,11 @@ const DynamicPage = () => {
 					</TextHeader>
 					<div className="my-6">{feature.description}</div>
 					{feature.link && (
-						<CustomLink link={feature.link}>
+						<Link link={feature.link}>
 							<div className="text-blue-600 with-arrow hover:underline">
 								{feature.link.text}
 							</div>
-						</CustomLink>
+						</Link>
 					)}
 				</div>
 			</div>
