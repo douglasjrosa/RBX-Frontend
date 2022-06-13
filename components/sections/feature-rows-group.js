@@ -26,7 +26,7 @@ const FeatureRowsGroup = ({ data }) => {
 						key={feature.id}
 					>
 						{/* Media section */}
-						<div className="customNextImage w-full lg:w-4/12">
+						<div className="w-full lg:w-4/12">
 							{/* Images */}
 							{feature.media.mime.startsWith('image') && (
 								<Image
