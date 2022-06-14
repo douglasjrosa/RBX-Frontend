@@ -27,7 +27,7 @@ const FeatureRowsGroup = ({ data }) => {
 						{/* Media section */}
 						<div className="w-full lg:w-4/12">
 							{/* Images */}
-							{feature.media.mime.startsWith('image') && (
+							{index > 1 && feature.media.mime.startsWith('image') && (
 								<Image
 									media={feature.media}
 									className={classNames(
