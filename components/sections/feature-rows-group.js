@@ -1,5 +1,4 @@
 import classNames from 'classnames';
-import Markdown from 'react-markdown';
 import Image from '@/components/elements/image';
 import CustomLink from '@/components/elements/custom-link';
 import TextHeader from '@/components/elements/text-header'
@@ -10,7 +9,8 @@ const FeatureRowsGroup = ({ data }) => {
 	return (
 		<div className="container flex flex-col z-20">
 			{data.features.map((feature, index) => {
-				const row = (
+				joinNextRow = feature.joinNextRow;
+				return (
 					<div
 						className={classNames(
 							// Common classes
@@ -43,7 +43,7 @@ const FeatureRowsGroup = ({ data }) => {
 						{/* Text section */}
 						<div className="w-full lg:w-6/12 text-lg p-5">
 							<TextHeader heading={index} className="text-4xl">{feature.title}</TextHeader>
-							<Markdown className="my-6">{feature.description}</Markdown>
+							<div className="my-6">{feature.description}</div>
 							{feature.link && (
 								<CustomLink link={feature.link}>
 									<div className="text-blue-600 with-arrow hover:underline">
@@ -54,8 +54,6 @@ const FeatureRowsGroup = ({ data }) => {
 						</div>
 					</div>
 				);
-				joinNextRow = feature.joinNextRow;
-				return row;
 			})}
 		</div>
 	);
