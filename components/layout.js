@@ -1,7 +1,7 @@
 import Navbar from './elements/navbar';
 import Footer from './elements/footer';
 import NotificationBanner from './elements/notification-banner';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import WhatsAppButton from './elements/whatsapp-button';
 import Loading from '@/components/elements/loading';
 
