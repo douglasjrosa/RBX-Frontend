@@ -5,7 +5,7 @@ import { useState, useEffect } from 'react';
 import WhatsAppButton from './elements/whatsapp-button';
 import Loading from '@/components/elements/loading';
 
-const Layout = ({ children, global, bgImage }) => {
+const Layout = ({ children, global, bgImage, mounted }) => {
 	const {
 		navbar,
 		footer,
@@ -16,8 +16,6 @@ const Layout = ({ children, global, bgImage }) => {
 	} = global;
 
 	const [bannerIsShown, setBannerIsShown] = useState(true);
-	const [mounted, setMounted] = useState(false);
-	useEffect(() => setMounted(true), []);
 
 	return (
 		<div>
@@ -40,6 +38,7 @@ const Layout = ({ children, global, bgImage }) => {
 								media={whatsappImage}
 								contatos={whatsappContacts}
 								msg={whatsappMsg}
+								mounted={mounted}
 							/>
 						)}
 					{notificationBanner && bannerIsShown && (

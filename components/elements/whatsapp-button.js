@@ -1,31 +1,16 @@
 import Image from './image';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
+import { isMobileCheck } from 'utils/is-mobile';
 
-const isMobile = () => {
-	const [mounted, setMounted] = useState(false);
-	useEffect(() => setMounted(true), []);
-	const agents = [
-		/Android/i,
-		/webOs/i,
-		/iPhone/i,
-		/iPad/i,
-		/iPod/i,
-		/BlackBerry/i,
-		/Windows Phone/i
-	];
-	let resp = false;
-	agents.map((agent) => {
-		if (mounted && navigator.userAgent.match(agent)) resp = true;
-	});
-	return resp;
-};
 
 const WhatsAppButton = props => {
-	const { media, contatos, msg } = props;
+	const { media, contatos, msg, mounted } = props;
 
 	const [buttonIsClicked, setButtonIsClicked] = useState(false);
 
-	const whatsappInterface = isMobile() ? 'api' : 'web';
+	const isMobile = mounted && isMobileCheck(navigator.userAgent);
+
+	const whatsappInterface = isMobile ? 'api' : 'web';
 	const url = 'https://' + whatsappInterface + '.whatsapp.com/send?phone=';
 	return (
 		<div className='z-30'>

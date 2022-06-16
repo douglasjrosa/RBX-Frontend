@@ -1,20 +1,16 @@
 import classNames from 'classnames';
+import Markdown from 'react-markdown';
 import Image from '@/components/elements/image';
 import CustomLink from '@/components/elements/custom-link';
 import TextHeader from '@/components/elements/text-header'
-import { isMobileCheck } from 'utils/is-mobile';
 
-const FeatureRowsGroup = ({ data, mounted }) => {
+const FeatureRowsGroup = ({ data }) => {
 	var joinNextRow = false;
 
-	const isMobile = mounted && isMobileCheck(navigator.userAgent);
-	console.log(!isMobile);
-	
 	return (
 		<div className="container flex flex-col z-20">
 			{data.features.map((feature, index) => {
-				joinNextRow = feature.joinNextRow;
-				return (
+				const row = (
 					<div
 						className={classNames(
 							// Common classes
@@ -31,7 +27,7 @@ const FeatureRowsGroup = ({ data, mounted }) => {
 						{/* Media section */}
 						<div className="w-full lg:w-4/12">
 							{/* Images */}
-							{ (index > 1 || !isMobile) && feature.media.mime.startsWith('image') && (
+							{feature.media.mime.startsWith('image') && (
 								<Image
 									media={feature.media}
 									className={classNames(
@@ -47,7 +43,7 @@ const FeatureRowsGroup = ({ data, mounted }) => {
 						{/* Text section */}
 						<div className="w-full lg:w-6/12 text-lg p-5">
 							<TextHeader heading={index} className="text-4xl">{feature.title}</TextHeader>
-							<div className="my-6">{feature.description}</div>
+							<Markdown className="my-6">{feature.description}</Markdown>
 							{feature.link && (
 								<CustomLink link={feature.link}>
 									<div className="text-blue-600 with-arrow hover:underline">
@@ -58,6 +54,8 @@ const FeatureRowsGroup = ({ data, mounted }) => {
 						</div>
 					</div>
 				);
+				joinNextRow = feature.joinNextRow;
+				return row;
 			})}
 		</div>
 	);

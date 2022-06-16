@@ -1,7 +1,6 @@
 import App from 'next/app';
 import AppHead from '@/components/elements/head';
 import ErrorPage from 'next/error';
-import { useEffect } from 'react';
 import { useRouter } from 'next/router';
 import { DefaultSeo } from 'next-seo';
 import { getStrapiMedia } from 'utils/media';
@@ -11,6 +10,8 @@ import '@/styles/index.css';
 
 import { pageview } from 'lib/gtag';
 import Analytics from 'components/analytics';
+
+import { useState, useEffect } from 'react';
 
 const MyApp = ({ Component, pageProps }) => {
 	// Prevent Next bug when it tries to render the [[...slug]] route
@@ -29,7 +30,10 @@ const MyApp = ({ Component, pageProps }) => {
 		? 'bg-rbx-porto bg-fixed bg-cover'
 		: 'bg-rbx-green bg-[length:50px_50px]';
 
+	const [mounted, setMounted] = useState(false);
+	
 	useEffect(() => {
+		setMounted(true)
 		const handleRouteChange = (url) => {
 			pageview(url);
 		};
@@ -39,7 +43,7 @@ const MyApp = ({ Component, pageProps }) => {
 			router.events.off('routeChangeComplete', handleRouteChange);
 		};
 	}, []);
-
+	
 	// Extract the data we need
 	const { global } = pageProps;
 	const pageMetadata = pageProps.metadata;
@@ -79,8 +83,8 @@ const MyApp = ({ Component, pageProps }) => {
 			/>
 			{/* Display the content */}
 
-			<Layout global={global} bgImage={bgImage}>
-				<Component {...pageProps} />
+			<Layout global={global} bgImage={bgImage} mounted={mounted} >
+				<Component {...pageProps} mounted={mounted} />
 			</Layout>
 			{process.env.NODE_ENV === 'production' && <Analytics />}
 		</>

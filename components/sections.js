@@ -1,12 +1,16 @@
 import FeatureRowsGroup from "@/components/sections/feature-rows-group";
+import FeatureColumnsGroup from "@/components/sections/feature-columns-group";
+import RichText from "@/components/sections/rich-text";
 
 // Map Strapi sections to section components
 const sectionComponents = {
-  "sections.feature-rows-group": FeatureRowsGroup
+  "sections.feature-columns-group": FeatureColumnsGroup,
+  "sections.feature-rows-group": FeatureRowsGroup,
+  "sections.rich-text": RichText
 };
 
 // Display a section individually
-const Section = ({ sectionData }) => {
+const Section = ({ sectionData, mounted }) => {
   // Prepare the component
   const SectionComponent = sectionComponents[sectionData.__component];
 
@@ -15,12 +19,12 @@ const Section = ({ sectionData }) => {
   }
 
   // Display the section
-  return <SectionComponent data={sectionData} />;
+  return <SectionComponent data={sectionData} mounted={mounted} />;
 };
 
 
 // Display the list of sections
-const Sections = ({ sections }) => {
+const Sections = ({ sections, mounted }) => {
   return (
     <div className="flex flex-col">
 		
@@ -28,6 +32,7 @@ const Sections = ({ sections }) => {
         <Section
           sectionData={section}
           key={`${section.__component}${section.id}`}
+		  mounted={mounted}
         />
       ))}
     </div>
