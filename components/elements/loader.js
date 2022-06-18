@@ -3,7 +3,7 @@ import React from 'react';
 const Loader = props => {	
 	return (
 		<div>
-			<div style={{color: "gray"}} className='text-7xl'>Carregando...</div>
+			<div style={{color: "white"}} className='text-7xl shadow'>Carregando...</div>
 		</div>
 	);
 };

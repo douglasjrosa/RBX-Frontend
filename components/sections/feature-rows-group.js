@@ -8,7 +8,6 @@ const FeatureRowsGroup = ({ data, mounted }) => {
 	var joinNextRow = false;
 
 	const isMobile = mounted && isMobileCheck(navigator.userAgent);
-	console.log(!isMobile);
 	
 	return (
 		<div className="container flex flex-col z-20">

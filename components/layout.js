@@ -26,6 +26,7 @@ const Layout = ({ children, global, bgImage, mounted }) => {
 							<Navbar navbar={navbar} />
 						</div>
 						<div className="relative my-36 z-10">
+							<div className='h-[85vh] text-center text-7xl text-white py-20 m-5 bg-blue-600 rounded' >Wellcome!!!</div>
 							{!mounted && <Loading />}
 							{mounted && children}
 						</div>
