@@ -1,4 +1,4 @@
-import NextImage from 'next/image';
+//import NextImage from 'next/image';
 
 const Image = (props) => {
 	const { media, priority } = props;
@@ -19,7 +19,7 @@ const Image = (props) => {
 	for (let prop in newProps) {
 		if (newProps[prop] === '') delete newProps[prop];
 	}
-	return <NextImage {...newProps} />;
+	return <img {...newProps} />;
 };
 
 export default Image;
