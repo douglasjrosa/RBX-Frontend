@@ -14,10 +14,10 @@ import Analytics from 'components/analytics';
 import { useState, useEffect } from 'react';
 
 const MyApp = ({ Component, pageProps }) => {
-	// Prevent Next bug when it tries to render the [[...slug]] route
+	// Prevent Next bug when it tries to render the [slug] route
 	const router = useRouter();
 	const slug = router.asPath;
-	if (slug === '/[[...slug]]') return null;
+	if (slug === '/[slug]') return null;
 
 	const mainPages = [
 		'/',
@@ -31,9 +31,9 @@ const MyApp = ({ Component, pageProps }) => {
 		: 'bg-rbx-green bg-[length:50px_50px]';
 
 	const [mounted, setMounted] = useState(false);
-	
+
 	useEffect(() => {
-		setMounted(true)
+		setMounted(true);
 		const handleRouteChange = (url) => {
 			pageview(url);
 		};
@@ -43,7 +43,7 @@ const MyApp = ({ Component, pageProps }) => {
 			router.events.off('routeChangeComplete', handleRouteChange);
 		};
 	}, []);
-	
+
 	// Extract the data we need
 	const { global } = pageProps;
 	const pageMetadata = pageProps.metadata;
@@ -83,7 +83,7 @@ const MyApp = ({ Component, pageProps }) => {
 			/>
 			{/* Display the content */}
 
-			<Layout global={global} bgImage={bgImage} mounted={mounted} >
+			<Layout global={global} bgImage={bgImage} mounted={mounted}>
 				<Component {...pageProps} mounted={mounted} />
 			</Layout>
 			{process.env.NODE_ENV === 'production' && <Analytics />}
@@ -92,7 +92,7 @@ const MyApp = ({ Component, pageProps }) => {
 };
 
 // getInitialProps disables automatic static optimization for pages that don't
-// have getStaticProps. So [[...slug]] pages still get SSG.
+// have getStaticProps. So [slug] pages still get SSG.
 // Hopefully we can replace this with getStaticProps once this issue is fixed:
 // https://github.com/vercel/next.js/discussions/10949
 MyApp.getInitialProps = async (ctx) => {

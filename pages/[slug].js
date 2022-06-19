@@ -25,14 +25,14 @@ const DynamicPage = ({ page }) => {
 };
 
 export const getStaticPaths = async () => {
-	const paths = slugs.map((slug) => ({ params: { slug: [slug] } }));
+	const paths = slugs.map((slug) => ({ params: { slug: slug } }));
 
 	return { paths, fallback: true };
 };
 
 export async function getStaticProps({ params: { slug } }) {
 
-	const slugPath = slug ? slug[0] : 'home';
+	const slugPath = slug ? slug : 'home';
 	const { page } = slugs.includes(slugPath)
 		? require('lib/pages/' + slugPath)
 		: { page: null };
