@@ -1,9 +1,7 @@
 import NextImage from 'next/image';
 
 const customLoader = ({ src, width, quality }) => {
-	return `${process.env.NEXT_PUBLIC_WEB_PROTOCOL}://${
-		process.env.NEXT_PUBLIC_SITE_DOMAIN
-	}/_next/image?url=${encodeURIComponent(src)}&w=${Math.min(width, 1080)}&q=${
+	return `http://ribermax.com.br/_next/image?url=${encodeURIComponent(src)}&w=${Math.min(width, 1080)}&q=${
 		quality || 75
 	}`;
 };

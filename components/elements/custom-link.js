@@ -6,7 +6,7 @@ const CustomLink = ({ link, children }) => {
 	// For internal links, use the Next.js Link component
 	if (isInternalLink) {
 		return (
-			<Link href="/[slug]" as={link.url}>
+			<Link href="/[[...slug]]" as={link.url}>
 				<a>{children}</a>
 			</Link>
 		);

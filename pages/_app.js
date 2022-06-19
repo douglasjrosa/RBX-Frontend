@@ -3,15 +3,13 @@ import { DefaultSeo } from 'next-seo';
 import Layout from '@/components/layout';
 import '@/styles/index.css';
 import { global } from 'lib/global';
+import { useRouter } from 'next/router';
+import Loading from '@/components/elements/loading';
 
-const MyApp = (params) => {
-	//return console.log(params.router);
-
-	const { Component, pageProps } = params;
-
-	const router = { state: { asPath: '/caixa-madeira-compensado' } };
-
-	if (!router.state || router.state.asPath === '/[slug]') return null;
+const MyApp = ({ Component, pageProps }) => {
+	// Prevent Next bug when it tries to render the [[...slug]] route
+	const router = useRouter();
+	if (router.asPath === '/[[...slug]]') return <Loading />;
 
 	const { metadata } = global;
 	const favicon = global.favicon.url;

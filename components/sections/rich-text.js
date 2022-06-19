@@ -1,10 +1,10 @@
 import Markdown from 'react-markdown';
 
 const RichText = ({ data }) => {
-	
+
 	return (
 		<div
-			className="container prose-lg max-w-4xl z-20 bg-white rounded-lg shadow-lg p-12 richText-rbx block"
+			className="container prose-lg max-w-[90vw] bg-white rounded-lg shadow-lg p-12 block"
 		>
 			<Markdown
 				components={{

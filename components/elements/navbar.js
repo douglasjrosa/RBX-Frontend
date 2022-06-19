@@ -20,7 +20,7 @@ const Navbar = ({ navbar }) => {
 				<div className="container flex flex-row items-center justify-between">
 					{/* Content aligned to the left */}
 					<div className="flex flex-row items-center">
-						<Link href="/[slug]" as="/">
+						<Link href="/[[...slug]]" as="/">
 							<a
 								aria-label="Página inicial"
 								className="w-[150px]"

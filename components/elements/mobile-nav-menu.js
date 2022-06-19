@@ -32,8 +32,8 @@ const MobileNavMenu = ({ navbar, closeSelf }) => {
             className="flex flex-col list-none gap-6 items-baseline text-xl mb-10"
             onClick={closeSelf}
           >
-            {navbar.links.map((navLink) => (
-              <li key={navLink.id} className="block w-full">
+            {navbar.links.map((navLink, index) => (
+              <li key={`navLinkKey${index}`} className="block w-full">
                 <CustomLink link={navLink}>
                   <div className="hover:text-gray-900 py-6 flex flex-row justify-between items-center">
                     <span>{navLink.text}</span>
