@@ -9,15 +9,14 @@ module.exports = withPlugins([withBundleAnalyzer, withPWA], {
 		dest: 'public',
 		register: true,
 		skipWaiting: true,
-		//publicExcludes: ['!images/*'],
-		//buildExcludes: [/chunks\/images\/.*$/, /images\/.*$/, /media\/.*$/],
+		publicExcludes: ['!images/*'],
+		buildExcludes: [/chunks\/images\/.*$/, /images\/.*$/, /media\/.*$/],
 		disable: process.env.NODE_ENV === 'development'
 	},
 	productionBrowserSourceMaps: true,
 	images: {
 		loader: 'custom',
-		domains: [ 'ribermax.com.br' ],
-		path: "/_next/images",
+		domains: [ 'https://rbx-backend-media.s3.sa-east-1.amazonaws.com' ],
 		minimumCacheTTL: 15552000,
 		deviceSizes: [640, 750, 828, 1080, 1200, 1920, 2048, 3840],
 		imageSizes: [16, 32, 48, 64, 96, 128, 256, 384],

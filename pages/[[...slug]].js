@@ -36,7 +36,7 @@ export const getStaticPaths = async () => {
 };
 
 export async function getStaticProps({ params }) {
-	
+
 	let chainedSlugs;
 	if (params == {} || !params.slug) {
 		// To get the homepage, find the only page where slug is an empty string
