@@ -2,16 +2,16 @@ import classNames from 'classnames';
 import Image from '@/components/elements/image';
 import CustomLink from '@/components/elements/custom-link';
 import TextHeader from '@/components/elements/text-header'
-//import { isMobileCheck } from 'utils/is-mobile';
-//import { useState, useEffect } from 'react';
+import { isMobileCheck } from 'utils/is-mobile';
+import { useState, useEffect } from 'react';
 
 const FeatureRowsGroup = ({ data }) => {
 	var joinNextRow = false;
 
-	//const [mounted, setMounted] = useState(false);
-	//useEffect(() => setMounted(true), []);
+	const [mounted, setMounted] = useState(false);
+	useEffect(() => setMounted(true), []);
 	
-	//const isMobile = mounted && isMobileCheck(navigator.userAgent);
+	const isMobile = mounted && isMobileCheck(navigator.userAgent);
 	
 	return (
 		<div className="container flex flex-col z-20">
@@ -34,7 +34,7 @@ const FeatureRowsGroup = ({ data }) => {
 						{/* Media section */}
 						<div className="w-full lg:w-4/12">
 							{/* Images */}
-							{feature.media.mime.startsWith('image') && (
+							{ (index > 1 || !isMobile) && feature.media.mime.startsWith('image') && (
 								<Image
 									media={feature.media}
 									className={classNames(
