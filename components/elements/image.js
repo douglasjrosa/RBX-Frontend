@@ -1,25 +1,33 @@
 import NextImage from 'next/image';
 
-	const Image = (props) => {
+const customLoader = ({ src, width, quality }) => {
+	`https://ribermax.com.br/_next/image?url=${encodeURIComponent(
+		src
+	)}&w=${Math.min(width, 1080)}&q=${quality || 75}`;
+};
+
+const Image = (props) => {
 	const { media, priority } = props;
-	const { alternativeText, className, width, height, layout, name } = media;
 
-	const src = require('../../public/images/' + name).default.src;
+	const src = require('../../public/images/' + media.name).default.src;
+	const alt = props.alternativeText || media.alternativeText;
+	const className = props.className || media.className;
+	const width = props.width || media.width;
+	const height = props.height || media.height;
+	const layout = props.layout || media.layout || 'responsive';
 
-	let newProps = {
-		src,
-		alt: props.alternativeText || alternativeText,
-		className: props.className || className,
-		width: props.width || width,
-		height: props.height || height,
-		layout: props.layout || layout || 'responsive',
-		priority
-	};
-
-	for (let prop in newProps) {
-		if (newProps[prop] === '') delete newProps[prop];
-	}
-	return <NextImage {...newProps} />;
+	return (
+		<NextImage
+			loader={customLoader}
+			src={src}
+			alt={alt}
+			className={className}
+			width={width}
+			height={height}
+			layout={layout}
+			priority={priority}
+		/>
+	);
 };
 
 export default Image;

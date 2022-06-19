@@ -1,11 +1,10 @@
 const withPlugins = require('next-compose-plugins');
-const withImageLoader = require('next-image-loader');
 const withBundleAnalyzer = require('@next/bundle-analyzer')({
 	enabled: process.env.ANALYZE === 'true'
 });
 const withPWA = require('next-pwa');
 
-module.exports = withPlugins([withImageLoader, withBundleAnalyzer, withPWA], {
+module.exports = withPlugins([withBundleAnalyzer, withPWA], {
 	pwa: {
 		dest: 'public',
 		register: true,
