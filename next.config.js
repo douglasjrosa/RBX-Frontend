@@ -16,7 +16,7 @@ module.exports = withPlugins([withBundleAnalyzer, withPWA], {
 	productionBrowserSourceMaps: true,
 	images: {
 		loader: 'custom',
-		domains: ["localhost:3000"],
+		domains: [ process.env.SITE_DOMAIN ],
 		path: "/_next/images",
 		minimumCacheTTL: 15552000,
 		deviceSizes: [640, 750, 828, 1080, 1200, 1920, 2048, 3840],
