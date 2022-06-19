@@ -1,8 +1,8 @@
 import NextImage from 'next/image';
 
 const customLoader = ({ src, width, quality }) => {
-	return `${process.env.WEB_PROTOCOL}://${
-		process.env.SITE_URL
+	return `${process.env.NEXT_PUBLIC_WEB_PROTOCOL}://${
+		process.env.NEXT_PUBLIC_SITE_URL
 	}/_next/image?url=${encodeURIComponent(src)}&w=${Math.min(width, 1080)}&q=${
 		quality || 75
 	}`;
