@@ -47,3 +47,9 @@ export async function getGlobalData() {
   const global = await fetchAPI('/global')
   return global
 }
+
+// Get medias from Strapi (...)
+export async function getStrapiMedias() {
+  const medias = await fetchAPI('/upload/files')
+  return medias
+}

@@ -5,7 +5,7 @@ import Seo from '@/components/elements/seo';
 import { useRouter } from 'next/router'
 import Loading from '@/components/elements/loading';
 
-const DynamicPage = ({ page }) => {
+const DynamicPage = ({ page, medias }) => {
 	
 	
 	const router = useRouter();
