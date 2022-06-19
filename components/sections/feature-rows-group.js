@@ -3,10 +3,18 @@ import Image from '@/components/elements/image';
 import CustomLink from '@/components/elements/custom-link';
 import TextHeader from '@/components/elements/text-header';
 import Markdown from 'react-markdown';
+import { useEffect, useState } from 'react';
 
 const FeatureRowsGroup = ({ data }) => {
 	var joinNextRow = false;
-	
+	const [screenWidth, setScreenWidth] = useState();
+
+	useEffect(() => {
+		setScreenWidth(
+			window.innerWidth,
+	);
+	}, []);
+
 	return (
 		<div className="container flex flex-col z-20">
 			{data.features.map((feature, index) => {
@@ -28,22 +36,28 @@ const FeatureRowsGroup = ({ data }) => {
 						{/* Media section */}
 						<div className="w-full lg:w-4/12">
 							{/* Images */}
-							{index > 0 && feature.media.mime.startsWith('image') && (
-								<Image
-									media={feature.media}
-									className={classNames(
-										'object-cover h-auto md:rounded-md',
-										{ 'rounded-t-md': !joinNextRow }
-									)}
-									width={feature.mediaWidth}
-									height={feature.mediaHeight}
-									priority={index < 1}
-								/>
-							)}
+							{( index > 1 || ( screenWidth && screenWidth > 767 )) &&
+								feature.media.mime.startsWith('image') && (
+									<Image
+										media={feature.media}
+										className={classNames(
+											'object-cover h-auto md:rounded-md',
+											{ 'rounded-t-md': !joinNextRow }
+										)}
+										width={feature.mediaWidth}
+										height={feature.mediaHeight}
+										priority={index < 1}
+									/>
+								)}
 						</div>
 						{/* Text section */}
 						<div className="w-full lg:w-6/12 text-lg p-5">
-							<TextHeader heading={index} className="text-4xl py-6">{feature.title}</TextHeader>
+							<TextHeader
+								heading={index}
+								className="text-4xl py-6"
+							>
+								{feature.title}
+							</TextHeader>
 							<Markdown>{feature.description}</Markdown>
 							{feature.link && (
 								<CustomLink link={feature.link}>
