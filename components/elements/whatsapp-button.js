@@ -1,12 +1,14 @@
 import Image from './image';
-import { useState } from 'react';
 import { isMobileCheck } from 'utils/is-mobile';
+import { useState, useEffect } from 'react';
 
 
 const WhatsAppButton = props => {
-	const { media, contatos, msg, mounted } = props;
+	const { media, contatos, msg } = props;
 
 	const [buttonIsClicked, setButtonIsClicked] = useState(false);
+	const [mounted, setMounted] = useState(false);
+	useEffect(() => setMounted(true), []);
 
 	const isMobile = mounted && isMobileCheck(navigator.userAgent);
 

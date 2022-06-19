@@ -12,12 +12,6 @@ const Seo = ({ metadata }) => {
         title: metadata.metaTitle,
         description: metadata.metaDescription
       }}
-      // Only included Twitter data if we have it
-      twitter={{
-        ...(metadata.twitterCardType && { cardType: metadata.twitterCardType }),
-          // Handle is the twitter username of the content creator
-        ...(metadata.twitterUsername && { handle: metadata.twitterUsername }),
-      }}
     />
   );
 };

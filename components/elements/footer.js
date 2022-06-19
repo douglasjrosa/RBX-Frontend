@@ -5,15 +5,15 @@ const Footer = ({ footer }) => {
 	return (
 		<footer className="bg-emerald-600 relative">
 			<div className="grid grid-cols md:grid-cols-3 bg-black bg-opacity-70 lg:grid-cols-4 xl:grid-cols-5 gap-4 p-12">
-				{footer.columns.map((footerColumn) => (
-					<div key={footerColumn.id} className="col mt-10 lg:mt-0">
+				{footer.columns.map((footerColumn, index) => (
+					<div key={`footerKey${index}`} className="col mt-10 lg:mt-0">
 						<p className="uppercase tracking-wide font-semibold  text-white">
 							{footerColumn.title}
 						</p>
 						<ul className="mt-2 px-5">
-							{footerColumn.links.map((link) => (
+							{footerColumn.links.map((link, linkIndex) => (
 								<li
-									key={link.id}
+								key={`footerLinkKey${linkIndex}`}
 									className="py-3 lg:py-2 text-2xl lg:text-xl mx-1 text-green-200 hover:text-green-400"
 								>
 									<CustomLink link={link}>

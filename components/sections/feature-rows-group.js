@@ -3,10 +3,14 @@ import Image from '@/components/elements/image';
 import CustomLink from '@/components/elements/custom-link';
 import TextHeader from '@/components/elements/text-header'
 import { isMobileCheck } from 'utils/is-mobile';
+import { useState, useEffect } from 'react';
 
-const FeatureRowsGroup = ({ data, mounted }) => {
+const FeatureRowsGroup = ({ data }) => {
 	var joinNextRow = false;
 
+	const [mounted, setMounted] = useState(false);
+	useEffect(() => setMounted(true), []);
+	
 	const isMobile = mounted && isMobileCheck(navigator.userAgent);
 	
 	return (

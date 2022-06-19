@@ -30,8 +30,8 @@ const Navbar = ({ navbar }) => {
 						</Link>
 						{/* List of links on desktop */}
 						<ul className="hidden list-none md:flex flex-row gap-4 items-baseline ml-10 text-lg">
-							{navbar.links.map((navLink) => (
-								<li key={navLink.id}>
+							{navbar.links.map((navLink, index) => (
+								<li key={`navKey${index}`}>
 									<CustomLink link={navLink}>
 										<div className="hover:text-gray-900 px-2 py-1">
 											{navLink.text}
