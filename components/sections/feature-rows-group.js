@@ -1,7 +1,8 @@
 import classNames from 'classnames';
 import Image from '@/components/elements/image';
 import CustomLink from '@/components/elements/custom-link';
-import TextHeader from '@/components/elements/text-header'
+import TextHeader from '@/components/elements/text-header';
+import Markdown from 'react-markdown';
 
 const FeatureRowsGroup = ({ data }) => {
 	var joinNextRow = false;
@@ -42,8 +43,8 @@ const FeatureRowsGroup = ({ data }) => {
 						</div>
 						{/* Text section */}
 						<div className="w-full lg:w-6/12 text-lg p-5">
-							<TextHeader heading={index} className="text-4xl">{feature.title}</TextHeader>
-							<div className="my-6">{feature.description}</div>
+							<TextHeader heading={index} className="text-4xl py-6">{feature.title}</TextHeader>
+							<Markdown>{feature.description}</Markdown>
 							{feature.link && (
 								<CustomLink link={feature.link}>
 									<div className="text-blue-600 with-arrow hover:underline">
