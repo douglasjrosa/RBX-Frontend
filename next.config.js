@@ -15,7 +15,8 @@ module.exports = withPlugins([withBundleAnalyzer, withPWA], {
 	},
 	productionBrowserSourceMaps: true,
 	images: {
-		domains: ["rbx-backend-media.s3.sa-east-1.amazonaws.com"],
+		loader: 'custom',
+		domains: ["localhost:3000"],
 		path: "/_next/images",
 		minimumCacheTTL: 15552000,
 		deviceSizes: [640, 750, 828, 1080, 1200, 1920, 2048, 3840],

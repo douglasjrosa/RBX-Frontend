@@ -6,8 +6,7 @@ import { useRouter } from 'next/router'
 import Loading from '@/components/elements/loading';
 
 const DynamicPage = ({ page, medias }) => {
-	
-	
+		
 	const router = useRouter();
 	if (router.isFallback) return <Loading />
 	if (!page) return <ErrorPage statusCode={404} />;

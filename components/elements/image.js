@@ -7,15 +7,20 @@ const customLoader = ({ src, width, quality }) => {
 };
 
 const Image = (props) => {
-	const { media, priority } = props;
+	
+	const { media } = props;
 
-	const src = require('../../public/images/' + media.name).default.src;
+	const name = !media || !media.name ? props.src : media.name;
+	
+	const src = require('../../public/images/' + name).default.src;
 
-	const alt = media.alternativeText;
-	const className = media.className;
-	const width = media.width;
-	const height = media.height;
-	const layout = 'responsive';
+	const alt = props.alternativeText || media.alternativeText || '';
+	const className = props.className || media.className || '';
+	const width = props.width || media.width;
+	const height = props.height || media.height;
+	const layout = props.layout || 'responsive';
+	const priority = props.priority || false;
+
 
 	return (
 		<NextImage
