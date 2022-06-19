@@ -1,9 +1,11 @@
 import NextImage from 'next/image';
 
 const customLoader = ({ src, width, quality }) => {
-	return `https://ribermax.com.br/_next/image?url=${encodeURIComponent(src)}&w=${Math.min(width, 1080)}&q=${
+	const reqLink = `https://ribermax.com.br/_next/image?url=${encodeURIComponent(src)}&w=${Math.min(width, 1080)}&q=${
 		quality || 75
 	}`;
+	console.log(reqLink);
+	return reqLink;
 };
 
 const Image = (props) => {
@@ -11,7 +13,9 @@ const Image = (props) => {
 
 	const name = !media || !media.name ? props.src : media.name;
 
-	const src = require('../../public/images/' + name).default.src;
+	const imgObj = require('../../public/images/' + name).default;
+	const { src, blurDataURL } = imgObj;
+	
 
 	const alt = props.alternativeText || media.alternativeText || '';
 	const className = props.className || media.className || '';
@@ -31,7 +35,7 @@ const Image = (props) => {
 			layout={layout}
 			priority={priority}
 			placeholder="blur"
-			blurDataURL="/images/blur.webp"
+			blurDataURL={blurDataURL}
 		/>
 	);
 };
