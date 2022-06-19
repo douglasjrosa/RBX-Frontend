@@ -30,6 +30,8 @@ const Image = (props) => {
 			height={height}
 			layout={layout}
 			priority={priority}
+			placeholder="blur"
+			blurDataURL="/images/blur.webp"
 		/>
 	);
 };
