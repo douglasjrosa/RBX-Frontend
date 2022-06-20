@@ -2,23 +2,40 @@ import ErrorPage from 'next/error';
 import { slugs } from '@/lib/slugs';
 import Sections from '@/components/sections';
 import Seo from '@/components/elements/seo';
-import { useRouter } from 'next/router'
+import { useRouter } from 'next/router';
 import Loading from '@/components/elements/loading';
-import { getPageData } from '@/utils/api'
+import { getPageData } from '@/utils/api';
+import { useAmp } from 'next/amp';
 
-const DynamicPage = ({pageProps}) => {
-		
+export const config = { amp: 'hybrid' };
+
+const DynamicPage = ({ pageProps }) => {
+	const isAmp = useAmp();
 	const router = useRouter();
-	if (router.isFallback) return <Loading />
+	if (router.isFallback) return <Loading />;
 	if (!pageProps) return <ErrorPage statusCode={404} />;
-	
+
 	const { metadata, contentSections, slug } = pageProps;
-	
+	const date = new Date();
+
 	return (
 		<>
 			{/* Add meta tags for SEO*/}
 			<Seo metadata={metadata} />
 			{/* Display content sections */}
+			{isAmp && (
+				<div>
+					<p>Some time: {date.toJSON()}</p>
+					<amp-timeago
+						width="0"
+						height="15"
+						datetime={date.toJSON()}
+						layout="responsive"
+					>
+						/
+					</amp-timeago>
+				</div>
+			)}
 			<Sections sections={contentSections} slug={slug} />
 		</>
 	);
@@ -26,7 +43,6 @@ const DynamicPage = ({pageProps}) => {
 
 export const getStaticPaths = async () => {
 	const paths = slugs.map((slug) => {
-		
 		const slugArray = slug.split('__');
 
 		return { params: { slug: slugArray } };
@@ -36,7 +52,6 @@ export const getStaticPaths = async () => {
 };
 
 export async function getStaticProps({ params }) {
-
 	let chainedSlugs;
 	if (params == {} || !params.slug) {
 		// To get the homepage, find the only page where slug is an empty string
