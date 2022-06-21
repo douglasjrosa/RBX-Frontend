@@ -19,9 +19,10 @@ const Navbar = ({ navbar }) => {
 			>
 				<div className="container flex flex-row items-center justify-between">
 					{/* Content aligned to the left */}
-					<div className="flex flex-row items-center">
+					<div id="logo-and-links" className="flex flex-row items-center">
 						<Link href="/[[...slug]]" as="/">
 							<a
+								id="nav-logo"
 								aria-label="Página inicial"
 								className="w-[150px]"
 							>
@@ -57,7 +58,7 @@ const Navbar = ({ navbar }) => {
 					</button>
 					{/* CTA button on desktop */}
 					{navbar.button && (
-						<div className="hidden md:block">
+						<div id="nav-button" className="hidden md:block">
 							<ButtonLink
 								button={navbar.button}
 								appearance={getButtonAppearance(

@@ -11,6 +11,6 @@ const Container = ({children, slug}) => {
 		? 'bg-rbx-porto bg-fixed bg-cover py-36'
 		: 'bg-rbx-green bg-[length:50px_50px] py-36';
 
-	return <div className={theme} >{children}</div>
+	return <div id="main-container" className={theme} >{children}</div>
 }
 export default Container;

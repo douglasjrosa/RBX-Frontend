@@ -5,37 +5,20 @@ import Seo from '@/components/elements/seo';
 import { useRouter } from 'next/router';
 import Loading from '@/components/elements/loading';
 import { getPageData } from '@/utils/api';
-import { useAmp } from 'next/amp';
 
 export const config = { amp: 'hybrid' };
 
 const DynamicPage = ({ pageProps }) => {
-	const isAmp = useAmp();
 	const router = useRouter();
 	if (router.isFallback) return <Loading />;
 	if (!pageProps) return <ErrorPage statusCode={404} />;
 
 	const { metadata, contentSections, slug } = pageProps;
-	const date = new Date();
-
 	return (
 		<>
 			{/* Add meta tags for SEO*/}
 			<Seo metadata={metadata} />
 			{/* Display content sections */}
-			{isAmp && (
-				<div>
-					<p>Some time: {date.toJSON()}</p>
-					<amp-timeago
-						width="0"
-						height="15"
-						datetime={date.toJSON()}
-						layout="responsive"
-					>
-						/
-					</amp-timeago>
-				</div>
-			)}
 			<Sections sections={contentSections} slug={slug} />
 		</>
 	);

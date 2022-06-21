@@ -18,8 +18,7 @@ const FeatureRowsGroup = ({ data }) => {
 	return (
 		<div className="container flex flex-col z-20">
 			{data.features.map((feature, index) => {
-				joinNextRow = feature.joinNextRow;
-				return (
+				const rows = (
 					<div
 						className={classNames(
 							// Common classes
@@ -69,6 +68,8 @@ const FeatureRowsGroup = ({ data }) => {
 						</div>
 					</div>
 				);
+				joinNextRow = feature.joinNextRow;
+				return rows;
 			})}
 		</div>
 	);
