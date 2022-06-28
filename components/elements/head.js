@@ -1,6 +1,5 @@
 import Head from 'next/head';
 import { useAmp } from 'next/amp';
-import AmpStyles from '@/styles/amp-styles';
 
 const AppHead = (props) => {
 	const { favicon } = props;
@@ -9,7 +8,7 @@ const AppHead = (props) => {
 	/* Favicon */
 	return (
 		<Head>
-			{isAmp && <AmpStyles />}
+			<meta isAmp={isAmp} />
 			<link rel="shortcut icon" href={favicon} />
 			<link rel="manifest" href="/manifest.json" />
 			<link rel="apple-touch-icon" href="/icon.png"></link>

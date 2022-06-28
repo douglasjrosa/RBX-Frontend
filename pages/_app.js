@@ -13,7 +13,7 @@ const MyApp = ({ Component, pageProps }) => {
 
 	const { metadata } = global;
 	const favicon = global.favicon.url;
-
+	
 	return (
 		<>
 			<AppHead favicon={favicon} />
