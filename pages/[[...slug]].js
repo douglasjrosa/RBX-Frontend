@@ -8,12 +8,14 @@ import { getPageData } from '@/utils/api';
 
 export const config = { amp: 'hybrid' };
 
-const DynamicPage = ({ pageProps }) => {
+const DynamicPage = ( props ) => {
+	console.log(props);
+	
 	const router = useRouter();
 	if (router.isFallback) return <Loading />;
-	if (!pageProps) return <ErrorPage statusCode={404} />;
+	if (!props) return <ErrorPage statusCode={404} />;
 
-	const { metadata, contentSections, slug } = pageProps;
+	const { metadata, contentSections, slug } = props;
 	return (
 		<>
 			{/* Add meta tags for SEO*/}
@@ -45,13 +47,19 @@ export async function getStaticProps({ params }) {
 		chainedSlugs = params.slug.join('__');
 	}
 
-	const pageProps = slugs.includes(chainedSlugs)
-		? await getPageData(chainedSlugs)
-		: null;
+	if( !slugs.includes(chainedSlugs) ) return { props: {} };
+	return {props: {metadata: {},
+		contentSections: [],
+		slug: ""}};
+	const pageProps = await getPageData(chainedSlugs);
+
+	const { metadata, contentSections, slug } = pageProps;
 
 	return {
 		props: {
-			pageProps
+			metadata,
+			contentSections,
+			slug
 		}
 	};
 }

@@ -3,7 +3,7 @@ import { AmpStyles } from '../styles/amp-styles';
 
 const MyDocument = () => {
 	return (
-		<Html>
+		<Html lang='pt-BR'>
 			<Head />
 			<body>
 				<Main />
