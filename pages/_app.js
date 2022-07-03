@@ -2,9 +2,9 @@ import AppHead from '@/components/elements/head';
 import { DefaultSeo } from 'next-seo';
 import Layout from '@/components/layout';
 import '@/styles/index.css';
-import { global } from 'lib/global';
 import { useRouter } from 'next/router';
 import Loading from '@/components/elements/loading';
+import global from '@/lib/global'
 
 const MyApp = ({ Component, pageProps }) => {
 	// Prevent Next bug when it tries to render the [[...slug]] route

@@ -4,6 +4,8 @@ import { useAmp } from 'next/amp';
 const RichText = ({ data }) => {
 	const isAmp = useAmp();
 
+	console.log(data);
+
 	return (
 		<div
 			id="rich-text"

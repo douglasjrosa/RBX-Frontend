@@ -1,21 +1,18 @@
 import ErrorPage from 'next/error';
-import { slugs } from '@/lib/slugs';
 import Sections from '@/components/sections';
 import Seo from '@/components/elements/seo';
 import { useRouter } from 'next/router';
 import Loading from '@/components/elements/loading';
-import { getPageData } from '@/utils/api';
+import { graphQLClient } from './api/graphql';
 
 export const config = { amp: 'hybrid' };
 
-const DynamicPage = ( props ) => {
-	console.log(props);
-	
+const DynamicPage = ({ page }) => {
 	const router = useRouter();
 	if (router.isFallback) return <Loading />;
-	if (!props) return <ErrorPage statusCode={404} />;
+	if (!page) return <ErrorPage statusCode={404} />;
 
-	const { metadata, contentSections, slug } = props;
+	const { metadata, contentSections, slug } = page;
 	return (
 		<>
 			{/* Add meta tags for SEO*/}
@@ -27,10 +24,19 @@ const DynamicPage = ( props ) => {
 };
 
 export const getStaticPaths = async () => {
-	const paths = slugs.map((slug) => {
-		const slugArray = slug.split('__');
+	const query = `
+		query{
+			pages {
+				slug
+			}
+		}
+	`;
 
-		return { params: { slug: slugArray } };
+	const {
+		data: { pages }
+	} = await graphQLClient.executeOperation({ query });
+	const paths = pages.map((page) => {
+		return { params: { slug: page.slug.split('__') } };
 	});
 
 	return { paths, fallback: true };
@@ -47,21 +53,66 @@ export async function getStaticProps({ params }) {
 		chainedSlugs = params.slug.join('__');
 	}
 
-	if( !slugs.includes(chainedSlugs) ) return { props: {} };
-	return {props: {metadata: {},
-		contentSections: [],
-		slug: ""}};
-	const pageProps = await getPageData(chainedSlugs);
-
-	const { metadata, contentSections, slug } = pageProps;
-
-	return {
-		props: {
-			metadata,
-			contentSections,
-			slug
+	const query = `
+		query{
+			page(slug: "${chainedSlugs}"){
+				slug
+				contentSections {
+					component
+					content
+					features {
+						joinNextRow
+						title
+						description
+						link {
+							newTab
+							url
+							text
+						}
+						media {
+							name
+							alternativeText
+							size
+							width
+							height
+							url
+						}
+						icon {
+							name
+							alternativeText
+							size
+							width
+							height
+							url
+						}
+					}
+				}
+				metadata {
+					twitterCardType
+					metaTitle
+					metaDescription
+					shareImage {
+						name
+						alternativeText
+						size
+						width
+						height
+						url
+					}
+				}
+			}
 		}
-	};
+	`;
+
+	const {
+		data: { page }
+	} = await graphQLClient.executeOperation({ query });
+
+	return !page
+		? {}
+		: {
+				props: { page }
+		  };
 }
 
 export default DynamicPage;

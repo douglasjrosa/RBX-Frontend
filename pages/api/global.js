@@ -1,6 +1,15 @@
-import { fetchAPI } from "utils/api";
+import { getStrapiURL } from 'utils/api';
 
-export default async function Global(req, res){
-	const global = await fetchAPI('/global');
-	res.json(global);
-}
+export default async (req, res) => {
+	try {
+
+		// Get all global from Strapi
+		const global = await (await fetch(getStrapiURL('/global'))).json();
+
+		// Display output to user
+		res.status(200).json(global);
+	} catch (e) {
+		console.log(e);
+		res.send(JSON.stringify(e));
+	}
+};

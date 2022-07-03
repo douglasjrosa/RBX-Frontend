@@ -16,10 +16,11 @@ const FeatureRowsGroup = ({ data }) => {
 	}, []);
 
 	return (
-		<div className="container flex flex-col z-20">
+		<div className="container flex flex-col z-20" >
 			{data.features.map((feature, index) => {
 				const rows = (
 					<div
+						key={`feature${index}`}
 						className={classNames(
 							// Common classes
 							'flex flex-col justify-center md:p-8 sm:items-center bg-white md:gap-10 shadow-lg',
@@ -30,24 +31,22 @@ const FeatureRowsGroup = ({ data }) => {
 								'md:flex-row-reverse': index % 2 === 1
 							}
 						)}
-						key={feature.id}
 					>
 						{/* Media section */}
 						<div className="w-full lg:w-4/12">
 							{/* Images */}
-							{( index > 1 || ( screenWidth && screenWidth > 767 )) &&
-								feature.media.mime.startsWith('image') && (
-									<Image
-										media={feature.media}
-										className={classNames(
-											'object-cover h-auto md:rounded-md',
-											{ 'rounded-t-md': !joinNextRow }
-										)}
-										width={feature.mediaWidth}
-										height={feature.mediaHeight}
-										priority={index < 1}
-									/>
-								)}
+							{( index > 1 || ( screenWidth && screenWidth > 767 )) && (
+								<Image
+									media={feature.media}
+									className={classNames(
+										'object-cover h-auto md:rounded-md',
+										{ 'rounded-t-md': !joinNextRow }
+									)}
+									width={feature.mediaWidth}
+									height={feature.mediaHeight}
+									priority={index < 1}
+								/>
+							)}
 						</div>
 						{/* Text section */}
 						<div className="w-full lg:w-6/12 text-lg p-5">

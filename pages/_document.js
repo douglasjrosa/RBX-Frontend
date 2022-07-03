@@ -14,6 +14,7 @@ const MyDocument = () => {
 };
 
 MyDocument.getInitialProps = async (ctx) => {
+
 	const initialProps = await Document.getInitialProps(ctx);
 	let isAmp = false;
 	initialProps.head.map((prop) => {

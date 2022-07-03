@@ -10,18 +10,13 @@ const sectionElements = {
 };
 
 // Display a section individually
-const Section = ({ sectionData }) => {
-	// Prepare the component
-	const section = sectionData.__component;
+const Section = (props) => {
 
-	const SectionComponent = sectionElements[section];
+	const {component} = props.data;
+	
+	const SectionComponent = sectionElements[component];
 
-	if (!SectionComponent) {
-		return null;
-	}
-
-	// Display the section
-	return <SectionComponent data={sectionData} />;
+	return !SectionComponent ? null : <SectionComponent {...props} />;
 };
 
 // Display the list of sections
@@ -31,8 +26,8 @@ const Sections = ({ sections, slug }) => {
 			<div className="flex flex-col">
 				{sections.map((section, index) => (
 					<Section
-						sectionData={section}
-						key={`sectionKey${index}`}
+						key={`section${index}`}
+						data={section}
 					/>
 				))}
 			</div>
