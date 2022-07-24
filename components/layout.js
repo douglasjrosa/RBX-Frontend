@@ -15,9 +15,7 @@ const Layout = ({ children }) => {
 	const [mounted, setMounted] = useState(false);
 
 	useEffect(() => {
-		setTimeout(() => {
-			setMounted(true);
-		}, 5000);
+		setMounted(true);
 	}, []);
 
 	return (
