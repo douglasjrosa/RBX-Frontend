@@ -1,5 +1,5 @@
 import { DefaultSeo } from 'next-seo';
-import Layout from '@/components/layout';
+//import Layout from '@/components/layout';
 import '@/styles/index.css';
 import { useRouter } from 'next/router';
 import Loading from '@/components/elements/loading';
@@ -37,9 +37,9 @@ const MyApp = ({ Component, pageProps }) => {
 			/>
 			{/* Display the content */}
 
-			<Layout>
+			<div>
 				<Component {...pageProps} />
-			</Layout>
+			</div>
 		</>
 	);
 };
