@@ -12,8 +12,7 @@ const Image = (props) => {
 	if (!media || !media.url) return null;
 	const url = `${process.env.NEXT_PUBLIC_BASE_URL}/images/${media.name}`;
 
-	const blurDataURL = require('../../public/images/' + media.name).default
-		.blurDataURL;
+	//const blurDataURL = require('../../public/images/' + media.name).default.blurDataURL;
 
 	const alt = props.alternativeText || media.alternativeText || '';
 	const className = props.className || media.className || '';
@@ -41,8 +40,6 @@ const Image = (props) => {
 			height={height}
 			layout={layout}
 			priority={priority}
-			placeholder="blur"
-			blurDataURL={blurDataURL}
 		/>
 	);
 };
