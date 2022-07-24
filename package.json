@@ -4,7 +4,7 @@
   "scripts": {
     "dev": "next",
     "develop": "next",
-    "build": "rm -rf dist && next build && next export",
+    "build": "rm -rf dist && next build",
     "start": "next start"
   },
   "dependencies": {
