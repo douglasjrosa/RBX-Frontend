@@ -2,7 +2,6 @@ import classNames from 'classnames';
 import Image from '@/components/elements/image';
 import CustomLink from '@/components/elements/custom-link';
 import TextHeader from '@/components/elements/text-header';
-import Markdown from 'react-markdown';
 import { useEffect, useState } from 'react';
 
 const FeatureRowsGroup = ({ data }) => {
@@ -56,7 +55,7 @@ const FeatureRowsGroup = ({ data }) => {
 							>
 								{feature.title}
 							</TextHeader>
-							<Markdown>{feature.description}</Markdown>
+							<div>{feature.description}</div>
 							{feature.link && (
 								<CustomLink link={feature.link}>
 									<div className="text-blue-600 with-arrow hover:underline">
