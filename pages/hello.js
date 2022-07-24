@@ -1,8 +1,6 @@
 import Container from 'components/elements/main-container';
 import { slug } from 'data/pages/embalagem-padrao-exportacao';
 
-export const config = { amp: 'hybrid' };
-
 const Hello = () => {
 	return (
 		<Container slug={slug}>
