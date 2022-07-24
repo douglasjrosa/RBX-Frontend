@@ -4,6 +4,7 @@ import { useAmp } from 'next/amp';
 const AppHead = (props) => {
 	const { favicon } = props;
 	const isAmp = useAmp();
+	
 
 	/* Favicon */
 	return (

@@ -6,8 +6,9 @@ import ButtonLink from './button-link';
 import Image from './image';
 import { getButtonAppearance } from 'utils/button';
 import CustomLink from './custom-link';
+import { navbar } from 'data/global';
 
-const Navbar = ({ navbar }) => {
+const Navbar = () => {
 	const [mobileMenuIsShown, setMobileMenuIsShown] = useState(false);
 
 	return (
@@ -19,7 +20,10 @@ const Navbar = ({ navbar }) => {
 			>
 				<div className="container flex flex-row items-center justify-between">
 					{/* Content aligned to the left */}
-					<div id="logo-and-links" className="flex flex-row items-center">
+					<div
+						id="logo-and-links"
+						className="flex flex-row items-center"
+					>
 						<Link href="/[[...slug]]" as="/">
 							<a
 								id="nav-logo"

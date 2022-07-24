@@ -3,32 +3,28 @@ import Footer from './elements/footer';
 import NotificationBanner from './elements/notification-banner';
 import { useState } from 'react';
 import WhatsAppButton from './elements/whatsapp-button';
+import {
+	notificationBanner,
+	whatsappImage,
+	whatsappContacts,
+	whatsappMsg
+} from 'data/global'
 
-const Layout = (params) => {
+const Layout = ({ children }) => {
 	
-	const { children, global } = params;
-	const {
-		navbar,
-		footer,
-		notificationBanner,
-		whatsappImage,
-		whatsappContacts,
-		whatsappMsg
-	} = global;
-
 	const [bannerIsShown, setBannerIsShown] = useState(true);
 
 	return (
 				<div className="flex flex-col justify-between ">
 					<div className="flex-1">
 						<div className="fixed w-full z-50">
-							<Navbar navbar={navbar} />
+							<Navbar/>
 						</div>
 						<div className="relative z-10">
 							{children}
 						</div>
 					</div>
-					<Footer footer={footer} />
+					<Footer/>
 					{whatsappImage &&
 						whatsappContacts.length &&
 						whatsappMsg && (

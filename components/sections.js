@@ -21,6 +21,8 @@ const Section = (props) => {
 
 // Display the list of sections
 const Sections = ({ sections, slug }) => {
+	console.log(sections);
+	
 	return (
 		<Container slug={slug}>
 			<div className="flex flex-col">

@@ -1,25 +1,20 @@
-import AppHead from '@/components/elements/head';
 import { DefaultSeo } from 'next-seo';
 import Layout from '@/components/layout';
 import '@/styles/index.css';
 import { useRouter } from 'next/router';
 import Loading from '@/components/elements/loading';
-import global from '@/lib/global'
+import {metaTitleSuffix, metadata} from 'data/global'
 
 const MyApp = ({ Component, pageProps }) => {
 	// Prevent Next bug when it tries to render the [[...slug]] route
 	const router = useRouter();
 	if (router.asPath === '/[[...slug]]') return <Loading />;
-
-	const { metadata } = global;
-	const favicon = global.favicon.url;
 	
 	return (
 		<>
-			<AppHead favicon={favicon} />
 			{/* Global site metadata */}
 			<DefaultSeo
-				titleTemplate={`%s | ${global.metaTitleSuffix}`}
+				titleTemplate={`%s | ${metaTitleSuffix}`}
 				title={'Page'}
 				description={metadata.metaDescription}
 				openGraph={{
@@ -40,7 +35,7 @@ const MyApp = ({ Component, pageProps }) => {
 			/>
 			{/* Display the content */}
 
-			<Layout global={global}>
+			<Layout>
 				<Component {...pageProps} />
 			</Layout>
 		</>
