@@ -10,7 +10,7 @@ const Image = (props) => {
 
 	const { media } = props;
 	if (!media || !media.url) return null;
-	const url = `images/${media.name}`;
+	const url = `${process.env.NEXT_PUBLIC_BASE_URL}/images/${media.name}`;
 
 	const blurDataURL = require('../../public/images/' + media.name).default
 		.blurDataURL;
