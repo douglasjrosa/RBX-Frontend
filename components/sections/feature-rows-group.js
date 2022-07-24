@@ -2,21 +2,13 @@ import classNames from 'classnames';
 import Image from '@/components/elements/image';
 import CustomLink from '@/components/elements/custom-link';
 import TextHeader from '@/components/elements/text-header';
-import { useEffect, useState } from 'react';
 
-const FeatureRowsGroup = ({ data }) => {
+const FeatureRowsGroup = ({ features, screenWidth }) => {
 	var joinNextRow = false;
-	const [screenWidth, setScreenWidth] = useState();
-
-	useEffect(() => {
-		setScreenWidth(
-			window.innerWidth,
-	);
-	}, []);
 
 	return (
 		<div className="container flex flex-col z-20" >
-			{data.features.map((feature, index) => {
+			{features.map((feature, index) => {
 				const rows = (
 					<div
 						key={`feature${index}`}

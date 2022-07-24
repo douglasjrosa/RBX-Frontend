@@ -4,16 +4,19 @@ import '@/styles/index.css';
 import { useRouter } from 'next/router';
 import Loading from '@/components/elements/loading';
 import { metaTitleSuffix, metadata } from 'data/global';
-import AppHead from '@/components/elements/head';
+import Head from 'next/head';
 
-const MyApp = ({ Component, pageProps }) => {
-	// Prevent Next bug when it tries to render the [[...slug]] route
+const MyApp = ({ Component }) => {
 	const router = useRouter();
 	if (router.asPath === '/[[...slug]]') return <Loading />;
 
 	return (
 		<>
-			<AppHead />
+			<Head>
+				<link rel="manifest" href="/manifest.json" />
+				<link rel="apple-touch-icon" href="/icon.png"></link>
+				<meta name="theme-color" content="#8b572a" />
+			</Head>
 			{/* Global site metadata */}
 			<DefaultSeo
 				titleTemplate={`%s | ${metaTitleSuffix}`}
@@ -35,10 +38,8 @@ const MyApp = ({ Component, pageProps }) => {
 					handle: metadata.twitterUsername
 				}}
 			/>
-			{/* Display the content */}
-
 			<div>
-				<Component {...pageProps} />
+				<Component />
 			</div>
 		</>
 	);
