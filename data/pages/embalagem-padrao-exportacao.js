@@ -16,7 +16,7 @@ export const page = {
 						"size": 15.01,
 						"width": 426,
 						"height": 132,
-						"url": "https://rbx-backend-media.s3.sa-east-1.amazonaws.com/worldwide_019b84e607.webp"
+						"url": `${process.env.NEXT_PUBLIC_BASE_URL}/images/worldwide.webp`
 					},
 					"icon": null
 				},
@@ -31,7 +31,7 @@ export const page = {
 						"size": 7.37,
 						"width": 350,
 						"height": 200,
-						"url": "https://rbx-backend-media.s3.sa-east-1.amazonaws.com/madeira_Xpapelao_a97e918c26.webp"
+						"url": `${process.env.NEXT_PUBLIC_BASE_URL}/images/madeira_Xpapelao.webp`
 					},
 					"icon": null
 				},
@@ -46,7 +46,7 @@ export const page = {
 						"size": 7.36,
 						"width": 400,
 						"height": 300,
-						"url": "https://rbx-backend-media.s3.sa-east-1.amazonaws.com/caixa_madeira_fumigada_02_9e33cfc218.webp"
+						"url": `${process.env.NEXT_PUBLIC_BASE_URL}/images/caixa_madeira_fumigada_02.webp`
 					},
 					"icon": null
 				}
@@ -63,7 +63,7 @@ export const page = {
 			"size": 38.52,
 			"width": 575,
 			"height": 424,
-			"url": "https://rbx-backend-media.s3.sa-east-1.amazonaws.com/logomarca_efect_31667e6ad7.webp"
+			"url": `${process.env.NEXT_PUBLIC_BASE_URL}/images/logomarca_efect.webp`
 		}
 	}
 }

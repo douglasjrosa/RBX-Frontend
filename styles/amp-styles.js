@@ -1,6 +1,6 @@
 export const AmpStyles = {
 	__html: `body {
-			background: url('https://rbx-backend-media.s3.sa-east-1.amazonaws.com/bg_h1_d355630fd8.webp');
+			background: url('${process.env.NEXT_PUBLIC_BASE_URL}/images/wood-min.webp');
 			background-repeat: repeat;
 			background-size: 50px;
 			background-attachment: fixed;
