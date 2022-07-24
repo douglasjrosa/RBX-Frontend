@@ -3,7 +3,7 @@ import Sections from '@/components/sections';
 import Seo from '@/components/elements/seo';
 import { useRouter } from 'next/router';
 import Loading from '@/components/elements/loading';
-import { graphQLClient } from './api/graphql';
+import { graphQLClient } from '../pages/api/graphql';
 
 export const config = { amp: 'hybrid' };
 
