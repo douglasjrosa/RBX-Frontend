@@ -1,7 +1,6 @@
-Sitemap: https://ribermax.com.br/api/sitemap
+Sitemap: https://ribermax.com.br/sitemap.xml
 
 User-agent: *
+Allow: /*
 
 Disallow: /api/*
-
-Allow: /api/sitemap
