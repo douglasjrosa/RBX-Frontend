@@ -2,11 +2,14 @@ import classNames from 'classnames';
 import Image from '@/components/elements/image';
 import CustomLink from '@/components/elements/custom-link';
 import TextHeader from '@/components/elements/text-header';
+import dynamic from 'next/dynamic';
+import { Suspense } from 'react';
+const Markdown = dynamic(() => import('react-markdown'), { suspense: true });
 
 const FeatureRowsGroup = ({ data, screenWidth }) => {
 	var joinNextRow = false;
 	return (
-		<div className="container flex flex-col z-20" >
+		<div className="container flex flex-col z-20">
 			{data.features.map((feature, index) => {
 				const rows = (
 					<div
@@ -25,7 +28,8 @@ const FeatureRowsGroup = ({ data, screenWidth }) => {
 						{/* Media section */}
 						<div className="w-full lg:w-4/12">
 							{/* Images */}
-							{( index > 1 || ( screenWidth && screenWidth > 767 )) && (
+							{(index > 1 ||
+								(screenWidth && screenWidth > 767)) && (
 								<Image
 									media={feature.media}
 									className={classNames(
@@ -46,7 +50,11 @@ const FeatureRowsGroup = ({ data, screenWidth }) => {
 							>
 								{feature.title}
 							</TextHeader>
-							<div>{feature.description}</div>
+							<Suspense
+								fallback={<div>{feature.description}</div>}
+							>
+								<Markdown>{feature.description}</Markdown>
+							</Suspense>
 							{feature.link && (
 								<CustomLink link={feature.link}>
 									<div className="text-blue-600 with-arrow hover:underline">
