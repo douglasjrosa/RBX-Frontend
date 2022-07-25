@@ -1,16 +1,15 @@
 import NextImage from 'next/image';
-import { useAmp } from 'next/amp';
+import { baseUrl } from 'data/global';
 
 const customLoader = ({ src, width, quality }) => {
 	return `${src}?w=${Math.min(width, 1080)}&q=${quality || 75}`;
 };
 
 const Image = (props) => {
-	const isAmp = useAmp();
 
 	const { media } = props;
-	if (!media || !media.url) return null;
-	const url = `${process.env.NEXT_PUBLIC_BASE_URL}/images/${media.name}`;
+	if (!media) return null;
+	const url = `${baseUrl}/images/${media.name}`;
 
 	const blurDataURL = require('../../public/images/' + media.name).default
 		.blurDataURL;
@@ -22,16 +21,7 @@ const Image = (props) => {
 	const layout = props.layout || 'responsive';
 	const priority = props.priority || false;
 
-	return isAmp ? (
-		<amp-img
-			src={url}
-			alt={alt}
-			className={className}
-			width={width}
-			height={height}
-			layout={layout}
-		/>
-	) : (
+	return (
 		<NextImage
 			loader={customLoader}
 			src={url}
@@ -46,5 +36,4 @@ const Image = (props) => {
 		/>
 	);
 };
-
 export default Image;

@@ -5,14 +5,13 @@ import { useRouter } from 'next/router';
 import Loading from '@/components/elements/loading';
 import { graphQLClient } from './api/graphql';
 
-export const config = { amp: 'hybrid' };
-
 const DynamicPage = ({ page }) => {
 	const router = useRouter();
 
 	if (router.isFallback) return <Loading />;
 	if (!page) return <ErrorPage statusCode={404} />;
-
+	
+	
 	const { metadata, contentSections, slug } = page;
 	return (
 		<>

@@ -3,16 +3,21 @@ import Layout from '@/components/layout';
 import '@/styles/index.css';
 import { useRouter } from 'next/router';
 import Loading from '@/components/elements/loading';
-import {metaTitleSuffix, metadata} from 'data/global'
+import { metaTitleSuffix, metadata } from 'data/global';
+import Head from 'next/head';
 
 const MyApp = ({ Component, pageProps }) => {
 	// Prevent Next bug when it tries to render the [[...slug]] route
 	const router = useRouter();
 	if (router.asPath === '/[[...slug]]') return <Loading />;
-	
+
 	return (
 		<>
-			{/* Global site metadata */}
+			<Head>
+				<link rel="manifest" href="/manifest.json" />
+				<link rel="apple-touch-icon" href="/icon.png"></link>
+				<meta name="theme-color" content="#8b572a" />
+			</Head>
 			<DefaultSeo
 				titleTemplate={`%s | ${metaTitleSuffix}`}
 				title={'Page'}
