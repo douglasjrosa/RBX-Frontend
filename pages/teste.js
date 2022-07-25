@@ -4,13 +4,6 @@ import { slug, contentSections } from 'data/pages/embalagem-padrao-exportacao';
 import { useEffect, useState } from 'react';
 
 const Teste = () => {
-	const [screenWidth, setScreenWidth] = useState();
-
-	useEffect(() => {
-		setScreenWidth(
-			window.innerWidth,
-	);
-	}, []);
 	return (
 		<Container slug={slug}>
 			<div className="flex flex-col">

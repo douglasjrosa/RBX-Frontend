@@ -6,8 +6,8 @@ const MyDocument = () => {
 			<Head />
 			<body>
 				<Main />
-				<NextScript />
 			</body>
+			<NextScript />
 		</Html>
 	);
 };

@@ -5,9 +5,6 @@ import TextHeader from '@/components/elements/text-header';
 
 const FeatureRowsGroup = ({ data, screenWidth }) => {
 	var joinNextRow = false;
-	return console.log(data);
-	
-
 	return (
 		<div className="container flex flex-col z-20" >
 			{data.features.map((feature, index) => {

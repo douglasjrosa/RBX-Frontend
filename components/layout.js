@@ -1,8 +1,15 @@
-import Navbar from './elements/navbar';
-import Footer from './elements/footer';
-import NotificationBanner from './elements/notification-banner';
+import dynamic from 'next/dynamic';
+import { Suspense } from 'react';
 import { useState, useEffect } from 'react';
-import WhatsAppButton from './elements/whatsapp-button';
+const Navbar = dynamic(() => import('./elements/navbar'), { suspense: true });
+const Footer = dynamic(() => import('./elements/footer'), { suspense: true });
+const NotificationBanner = dynamic(
+	() => import('./elements/notification-banner'),
+	{ suspense: false }
+);
+const WhatsAppButton = dynamic(() => import('./elements/whatsapp-button'), {
+	suspense: false
+});
 import {
 	notificationBanner,
 	whatsappImage,
@@ -17,14 +24,15 @@ const Layout = ({ children }) => {
 	useEffect(() => {
 		setMounted(true);
 	}, []);
-
 	return (
 		<div className="flex flex-col justify-between ">
 			<div className="flex-1">
 				<div className="fixed w-full z-50">{mounted && <Navbar />}</div>
 				<div className="relative z-10">{children}</div>
 			</div>
-			{mounted && <Footer />}
+			<Suspense fallback={`Loading...`}>
+				<Footer />
+			</Suspense>
 			{mounted &&
 				whatsappImage &&
 				whatsappContacts.length &&

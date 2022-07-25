@@ -5,12 +5,12 @@ import { useRouter } from 'next/router';
 import Loading from '@/components/elements/loading';
 import { graphQLClient } from './api/graphql';
 
-const DynamicPage = ({ page }) => {
+const DynamicPage = ({page}) => {
+		
 	const router = useRouter();
-
+	
 	if (router.isFallback) return <Loading />;
 	if (!page) return <ErrorPage statusCode={404} />;
-	
 	
 	const { metadata, contentSections, slug } = page;
 	return (
@@ -34,12 +34,13 @@ const getPages = async () => {
 
 	const {
 		data: { pages }
-	} = await graphQLClient.executeOperation({ query });	
+	} = await graphQLClient.executeOperation({ query });
 
 	const exceptions = ['images', 'teste'];
 	const filteredPages = [];
 	pages.map((page) => {
-		if (!exceptions.includes(page.slug)) filteredPages.push(page.slug);
+		if (!exceptions.includes(page.slug))
+			filteredPages.push({ slug: page.slug });
 	});
 	return filteredPages;
 };
@@ -120,11 +121,7 @@ export async function getStaticProps({ params }) {
 		data: { page }
 	} = await graphQLClient.executeOperation({ query });
 
-	return !page.metadata || !page.contentSections
-		? {}
-		: {
-				props: { page }
-		  };
+	return { props: {page} };
 }
 
 export default DynamicPage;

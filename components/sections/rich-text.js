@@ -1,4 +1,5 @@
 import Markdown from 'react-markdown';
+import { baseUrl } from 'data/global';
 
 const RichText = ({ data }) => {
 	return (
@@ -13,7 +14,7 @@ const RichText = ({ data }) => {
 						return (
 							<span className="text-center block">
 								<img
-									src={src}
+									src={`${baseUrl}/images/especialista-min.webp`}
 									alt={alt}
 									width={400}
 									height={300}

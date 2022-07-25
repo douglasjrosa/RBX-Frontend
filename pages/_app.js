@@ -1,12 +1,12 @@
 import { DefaultSeo } from 'next-seo';
-//import Layout from '@/components/layout';
+import Layout from '@/components/layout';
 import '@/styles/index.css';
 import { useRouter } from 'next/router';
 import Loading from '@/components/elements/loading';
 import { metaTitleSuffix, metadata } from 'data/global';
 import Head from 'next/head';
 
-const MyApp = ({ Component }) => {
+const MyApp = ({ Component, pageProps }) => {
 	const router = useRouter();
 	if (router.asPath === '/[[...slug]]') return <Loading />;
 
@@ -17,7 +17,7 @@ const MyApp = ({ Component }) => {
 				<link rel="apple-touch-icon" href="/icon.png"></link>
 				<meta name="theme-color" content="#8b572a" />
 			</Head>
-			{/* Global site metadata */}
+			
 			<DefaultSeo
 				titleTemplate={`%s | ${metaTitleSuffix}`}
 				title={'Page'}
@@ -38,9 +38,9 @@ const MyApp = ({ Component }) => {
 					handle: metadata.twitterUsername
 				}}
 			/>
-			<div>
-				<Component />
-			</div>
+			<Layout>
+				<Component {...pageProps} />
+			</Layout>
 		</>
 	);
 };
