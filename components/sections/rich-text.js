@@ -1,11 +1,6 @@
 import Markdown from 'react-markdown';
-import { useAmp } from 'next/amp';
 
 const RichText = ({ data }) => {
-	const isAmp = useAmp();
-
-	console.log(data);
-
 	return (
 		<div
 			id="rich-text"
@@ -17,22 +12,12 @@ const RichText = ({ data }) => {
 						const { src, alt } = props;
 						return (
 							<span className="text-center block">
-								{isAmp ? (
-									<amp-img
-										src={src}
-										alt={alt}
-										width={400}
-										height={300}
-										layout='responsive'
-									/>
-								) : (
-									<img
-										src={src}
-										alt={alt}
-										width={400}
-										height={300}
-									/>
-								)}
+								<img
+									src={src}
+									alt={alt}
+									width={400}
+									height={300}
+								/>
 							</span>
 						);
 					},
