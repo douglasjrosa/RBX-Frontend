@@ -2,12 +2,12 @@ import { Html, Head, Main, NextScript } from 'next/document';
 
 const MyDocument = () => {
 	return (
-		<Html lang='pt-BR'>
+		<Html lang="pt-BR">
 			<Head />
 			<body>
 				<Main />
+				<NextScript />
 			</body>
-			<NextScript />
 		</Html>
 	);
 };
