@@ -3,7 +3,7 @@ import Sections from '@/components/sections';
 import Seo from '@/components/elements/seo';
 import { useRouter } from 'next/router';
 import Loading from '@/components/elements/loading';
-import { graphQLClient } from '../pages/api/graphql';
+import { graphQLClient } from './api/graphql';
 
 export const config = { amp: 'hybrid' };
 
@@ -35,7 +35,7 @@ const getPages = async () => {
 
 	const {
 		data: { pages }
-	} = await graphQLClient.executeOperation({ query });
+	} = await graphQLClient.executeOperation({ query });	
 
 	const exceptions = ['images', 'teste'];
 	const filteredPages = [];
@@ -49,7 +49,7 @@ export const getStaticPaths = async () => {
 	const pages = await getPages();
 
 	const paths = pages.map((page) => {
-		return { params: { slug: page.split('__') } };
+		return { params: { slug: page.slug.split('__') } };
 	});
 
 	return { paths, fallback: true };
@@ -121,9 +121,11 @@ export async function getStaticProps({ params }) {
 		data: { page }
 	} = await graphQLClient.executeOperation({ query });
 
-	return page.metadata === undefined || page.contentSections === undefined
-		? { props: { page: {} } }
-		: { props: { page } };
+	return !page.metadata || !page.contentSections
+		? {}
+		: {
+				props: { page }
+		  };
 }
 
 export default DynamicPage;

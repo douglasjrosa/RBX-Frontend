@@ -3,12 +3,14 @@ import Image from '@/components/elements/image';
 import CustomLink from '@/components/elements/custom-link';
 import TextHeader from '@/components/elements/text-header';
 
-const FeatureRowsGroup = ({ features, screenWidth }) => {
+const FeatureRowsGroup = ({ data, screenWidth }) => {
 	var joinNextRow = false;
+	return console.log(data);
+	
 
 	return (
 		<div className="container flex flex-col z-20" >
-			{features.map((feature, index) => {
+			{data.features.map((feature, index) => {
 				const rows = (
 					<div
 						key={`feature${index}`}
