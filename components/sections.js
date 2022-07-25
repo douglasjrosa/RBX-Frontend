@@ -1,8 +1,13 @@
-import Container from './elements/main-container';
+import dynamic from 'next/dynamic';
+import { Suspense } from 'react';
+
 import FeatureRowsGroup from './sections/feature-rows-group';
 import FeatureColumnsGroup from './sections/feature-columns-group';
 import RichText from './sections/rich-text';
 import { useState, useEffect } from 'react';
+const Container = dynamic(() => import('./elements/main-container'), {
+	suspense: true
+});
 
 const sectionElements = {
 	'sections.feature-rows-group': FeatureRowsGroup,
@@ -10,7 +15,6 @@ const sectionElements = {
 	'sections.rich-text': RichText
 };
 
-// Display a section individually
 const Section = (props) => {
 	const { component } = props.data;
 
@@ -25,20 +29,29 @@ const Sections = ({ sections, slug }) => {
 	useEffect(() => {
 		setScreenWidth(window.innerWidth);
 	}, []);
+
+	const content = sections.map((section, index) => {
+		return (
+			<Section
+				key={`section${index}`}
+				data={section}
+				screenWidth={screenWidth}
+			/>
+		);
+	});
+
 	return (
-		<Container slug={slug}>
-			<div className="flex flex-col">
-				{sections.map((section, index) => {
-					return (
-						<Section
-							key={`section${index}`}
-							data={section}
-							screenWidth={screenWidth}
-						/>
-					);
-				})}
-			</div>
-		</Container>
+		<Suspense
+			fallback={
+				<div className="bg-[#E3C486] bg-repeat py-36">
+					<div className="flex flex-col">{content}</div>
+				</div>
+			}
+		>
+			<Container slug={slug}>
+				<div className="flex flex-col">{content}</div>
+			</Container>
+		</Suspense>
 	);
 };
 
