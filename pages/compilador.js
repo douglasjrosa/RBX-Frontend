@@ -23,7 +23,7 @@ export default function Home() {
 		const tableItens = itens.map((item, index) => {
 			const nItem = item.match(/\d+/)[0];
 			const cProd = item.match(/(?<=\d+ )\d+/)[0];
-			const qtde = item.match(/(?<=\d+ \d+ )\d+/)[0];
+			const qtde = item.match(/(?<=\d+ \d+ )[\d.]+/)[0];
 			const vProd = item.match(/(?<=UN )[\d.,]+/)[0];
 			const vTotal = item.match(/(?<=UN [\d.,]+ )[\d.,]+/)[0];
 			const nProd = item.match(/(?<=UN \d.*)[A-z].*/)[0];
@@ -48,7 +48,7 @@ export default function Home() {
 		navigator.clipboard.writeText(copyArea.innerText);
 
 		alert(
-			'Linhas copiadas com sucesso. Vá para a planilha "Pedidos" no arquivo "PEDIDOS ALLIAGE 2022", selecione uma célula vazia na coluna "A" e pressione Ctrl + Shift + V, em seguida clique no comando "Dividir texto em colunas" que aparece logo embaixo à direita do campo selecionado e então selecione "ponto e vírgula" (;). Por fim ordene as linhas por data de entrega.'
+			'Linhas copiadas com sucesso. Vá para a planilha "Pedidos" no arquivo "PEDIDOS ALLIAGE 2022", na coluna "A", selecione a primeira célula vazia logo abaixo da última célula não vazia e pressione Ctrl + Shift + V.'
 		);
 	};
 
