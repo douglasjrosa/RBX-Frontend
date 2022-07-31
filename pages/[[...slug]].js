@@ -36,7 +36,7 @@ const getPages = async () => {
 		data: { pages }
 	} = await graphQLClient.executeOperation({ query });
 
-	const exceptions = ['images', 'teste'];
+	const exceptions = ['compilador'];
 	const filteredPages = [];
 	pages.map((page) => {
 		if (!exceptions.includes(page.slug))
