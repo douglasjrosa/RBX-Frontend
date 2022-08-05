@@ -43,25 +43,28 @@ export default function Home() {
 		});
 
 		setTable(tableItens);
+	};
 
+	const copyIt = () => {
 		var copyArea = document.getElementById('copyArea');
 		navigator.clipboard.writeText(copyArea.innerText);
 
 		alert(
 			'Linhas copiadas com sucesso. Vá para a planilha "Pedidos" no arquivo "PEDIDOS ALLIAGE 2022", na coluna "A", selecione a primeira célula vazia logo abaixo da última célula não vazia e pressione Ctrl + Shift + V.'
 		);
-	};
+	}
 
 	return (
 		<div style={{ padding: '50px', marginTop: '100px' }}>
 			<input
 				type="text"
+				placeholder="Cole o texto do PDF aqui."
 				onChange={loadIt}
-				style={{ border: '1px solid black' }}
+				style={{ border: '1px solid #46b5ff', padding: "10px", margin: "10px", color: "#46b5ff", borderRadius: "5px" }}
 			/>
+			<button style={{padding: "10px", margin: "10px", backgroundColor: "#46b5ff", borderRadius: "5px", color: "white"}} onClick={copyIt} >Copiar</button>
 			<div id="copyArea">
 				{table.map((item, index) => {
-					console.log(`${item[0]}	${item[1]}	${item[2]}	${item[3]}	${item[4]}	${item[5]}	${item[6]}	${item[7]}	${item[8]}	${item[9]}`);
 					return (
 						<pre key={index}>
 							{`${item[0]}	${item[1]}	${item[2]}	${item[3]}	${item[4]}	${item[5]}	${item[6]}	${item[7]}	${item[8]}	${item[9]}`}
