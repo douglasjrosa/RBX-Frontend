@@ -153,12 +153,12 @@ export const footer = {
 					{
 						newTab: false,
 						url: "tel:+5516997655543",
-						text: "(16) 99765-5543 Jesuilla Comercial",
+						text: "(16) 99765-5543 Jesuilla (Comercial)",
 					},
 					{
 						newTab: false,
 						url: "tel:+5516982550729",
-						text: "(16) 98255-0729 Renato Administrativo",
+						text: "(16) 98255-0729 Renato (Administrativo)",
 					}
 				],
 			},
@@ -168,7 +168,7 @@ export const footer = {
 					{
 						newTab: false,
 						url: "tel:+5511982843965",
-						text: "(11) 98284-3965 Cláudia Comercial",
+						text: "(11) 98284-3965 Cláudia (Comercial)",
 					}
 				],
 			},
